@@ -1,2 +1,2 @@
-/porter-intelligence https://porter-intelligence-dashboard.netlify.app 200
-/porter-intelligence/* https://porter-intelligence-dashboard.netlify.app/:splat 200
+/porter-intelligence https://porter-intelligence-dashboard.netlify.app 301
+/porter-intelligence/* https://porter-intelligence-dashboard.netlify.app/:splat 301
