@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAC Address Spoofing — Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-logo">⬡</span>
+    <span class="sidebar-title">MAC Spoofing</span>
+    <button class="sidebar-collapse" id="sidebar-toggle" title="Toggle sidebar">‹</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-link">
+      <span class="nav-icon">◈</span>
+      <span class="nav-text">Overview</span>
+    </a>
+    <a href="methodology.html" class="nav-link">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">Methodology</span>
+    </a>
+    <a href="demo.html" class="nav-link">
+      <span class="nav-icon">▶</span>
+      <span class="nav-text">Live Demo</span>
+    </a>
+    <a href="results.html" class="nav-link">
+      <span class="nav-icon">◎</span>
+      <span class="nav-text">Results</span>
+    </a>
+    <a href="report.html" class="nav-link">
+      <span class="nav-icon">☰</span>
+      <span class="nav-text">Report</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="theme-icon">☀</span>
+      <span class="theme-label">Light mode</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Print button (fixed, hidden in print) -->
+<div class="print-btn-wrap">
+  <button class="btn" onclick="window.print()">🖨️ Print / Export PDF</button>
+</div>
+
+<!-- ═══════════════════════ MAIN WRAPPER ═══════════════════════ -->
+<div class="main-wrapper">
+
+  <header class="topbar">
+    <div class="topbar-title">Academic Report</div>
+    <div class="topbar-right">
+      <span class="badge badge-amber">WSL Ubuntu · Educational Environment</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="report-content">
+
+      <!-- Cover -->
+      <div class="report-cover">
+        <div class="report-main-title">MAC Address Spoofing</div>
+        <div class="report-subtitle">Network Security — College Project</div>
+        <div class="report-meta">
+          <div class="meta-item">Subject: <span>Computer Networks / Network Security</span></div>
+          <div class="meta-item">Tools: <span>WSL2 Ubuntu, macchanger, iproute2</span></div>
+          <div class="meta-item">Environment: <span>Ubuntu 22.04 LTS via WSL2</span></div>
+        </div>
+      </div>
+
+      <!-- 1. Abstract -->
+      <div class="report-section">
+        <h2>1. Abstract</h2>
+        <p>
+          MAC address spoofing is the technique of modifying a network interface's software-visible
+          MAC (Media Access Control) address to impersonate another device on a local network.
+          This project demonstrates the full spoofing workflow on Ubuntu 22.04 LTS running inside
+          Windows Subsystem for Linux 2 (WSL2), using the tools <span class="r-code">macchanger</span>
+          and <span class="r-code">ip link</span> from the <span class="r-code">iproute2</span>
+          package. The demonstration confirms that MAC address filtering — a widely deployed
+          network access control mechanism — can be bypassed in under 30 seconds without
+          specialized hardware or knowledge. The permanent hardware MAC stored in the NIC's EEPROM
+          is unaffected by the change, leaving no persistent trace. The recommended mitigation is
+          802.1X port-based authentication, which uses cryptographic certificates rather than
+          hardware addresses to establish device identity.
+        </p>
+      </div>
+
+      <!-- 2. Introduction -->
+      <div class="report-section">
+        <h2>2. Introduction</h2>
+        <p>
+          The MAC address is one of the oldest identifiers in computer networking. It was
+          formalized as part of the IEEE 802 project in the early 1980s, when the need for a
+          globally unique hardware identifier for network interface cards became apparent as
+          Ethernet adoption expanded. The standard, defined in IEEE 802-2014, allocates a 48-bit
+          address space divided into an Organizationally Unique Identifier (OUI) assigned by the
+          IEEE to each manufacturer, and a device-specific portion assigned by the manufacturer.
+          The result is an identifier intended to be globally unique per physical interface.
+        </p>
+        <p>
+          In the OSI networking model, MAC addresses operate at Layer 2 — the Data Link layer.
+          Every Ethernet and 802.11 Wi-Fi frame contains source and destination MAC addresses in
+          its header. Network switches use MAC address tables (also called CAM tables) to make
+          forwarding decisions, directing frames only to the port associated with the destination
+          MAC rather than broadcasting to all ports. This makes the MAC address foundational to
+          efficient local network operation.
+        </p>
+        <p>
+          MAC address filtering is a network access control technique in which an access point or
+          switch maintains an allowlist of permitted MAC addresses. Any frame arriving from a MAC
+          not on the allowlist is dropped before the device can associate with the network or
+          receive an IP address. Many home routers, small business access points, and embedded
+          network devices include MAC filtering as a security feature. Administrators often
+          configure it as the sole or primary access control on networks where the setup of
+          enterprise authentication infrastructure is impractical. Understanding the limitations
+          of this approach is critical to making informed security decisions.
+        </p>
+      </div>
+
+      <!-- 3. Objective -->
+      <div class="report-section">
+        <h2>3. Objective</h2>
+        <ul>
+          <li>
+            To demonstrate modification of a MAC address using Linux command-line tools
+            (<span class="r-code">macchanger</span>, <span class="r-code">ip link</span>)
+            on Ubuntu via WSL2.
+          </li>
+          <li>
+            To document the methodology used by an attacker to identify and clone an
+            authorized device's MAC address.
+          </li>
+          <li>
+            To analyze the impact of successful MAC spoofing on MAC-based network
+            access controls.
+          </li>
+          <li>
+            To evaluate the security implications and recommend stronger alternatives
+            such as 802.1X port-based authentication.
+          </li>
+        </ul>
+      </div>
+
+      <!-- 4. Problem Statement -->
+      <div class="report-section">
+        <h2>4. Problem Statement</h2>
+        <p>
+          Many home and small business networks rely on MAC address filtering as a primary
+          or sole access control mechanism. Network administrators configure allowlists of
+          trusted device MAC addresses on their routers or access points under the assumption
+          that a MAC address uniquely and reliably identifies a device. This assumption creates
+          a false sense of security with serious organizational risk.
+        </p>
+        <p>
+          The fundamental flaw is that MAC addresses were designed for device identification,
+          not authentication. They carry no cryptographic proof of identity — any software
+          running with root privileges on a Linux system can write an arbitrary value into the
+          kernel's MAC register in less than a second. Furthermore, MAC addresses are broadcast
+          in cleartext in every 802.11 management frame, making passive reconnaissance trivially
+          easy. An attacker with a Wi-Fi adapter capable of monitor mode can silently capture
+          all authorized MAC addresses from nearby traffic without transmitting a single packet,
+          leaving no trace in any router log.
+        </p>
+        <p>
+          The combination of easy reconnaissance and trivial impersonation means that MAC
+          filtering provides security only against completely unsophisticated, untargeted
+          intrusion attempts. Any motivated attacker with a laptop running Linux can bypass it
+          in under a minute. Organizations that rely on MAC filtering as their primary network
+          access control are therefore exposed to unauthorized access, data exfiltration, and
+          lateral movement by any attacker who can physically reach the RF coverage area.
+        </p>
+      </div>
+
+      <!-- 5. Scope -->
+      <div class="report-section">
+        <h2>5. Scope</h2>
+        <p>
+          This project covers MAC address modification on a Linux system (Ubuntu 22.04 LTS via
+          WSL2) for testing and educational purposes only. It demonstrates the methodology using
+          <span class="r-code">macchanger</span> and <span class="r-code">iproute2</span> on a
+          virtual network interface (<span class="r-code">eth0</span>). It does not cover
+          bypassing enterprise Network Access Control (NAC) solutions, 802.1X infrastructure,
+          or performing unauthorized access on any real network.
+        </p>
+      </div>
+
+      <!-- 6. Methodology -->
+      <div class="report-section">
+        <h2>6. Methodology</h2>
+        <p>
+          The lab environment consists of Ubuntu 22.04 LTS running inside Windows Subsystem
+          for Linux 2 (WSL2) on a Windows 11 host, accessed via Windows Terminal. The virtual
+          network interface <span class="r-code">eth0</span> represents a WSL virtual adapter
+          and is used as the target interface throughout the demonstration. All commands require
+          elevated privileges obtained via <span class="r-code">sudo</span>.
+        </p>
+        <p>
+          <strong>Tool installation.</strong> The demonstration requires two packages:
+          <span class="r-code">net-tools</span> (for <span class="r-code">ifconfig</span>) and
+          <span class="r-code">macchanger</span>. These are installed using
+          <span class="r-code">sudo apt install net-tools macchanger -y</span> after refreshing
+          the package index with <span class="r-code">sudo apt update</span>. The
+          <span class="r-code">ip</span> command from <span class="r-code">iproute2</span> is
+          pre-installed in Ubuntu and requires no additional installation.
+        </p>
+        <p>
+          <strong>Step 1 — Record original MAC.</strong> Before any changes are made, the
+          current MAC address is recorded using <span class="r-code">ifconfig eth0 | grep ether</span>.
+          This command reads the interface's current (software) MAC and displays it alongside
+          interface statistics. The recorded value serves as the baseline for verification after
+          both spoofing and restoration.
+        </p>
+        <p>
+          <strong>Step 2 — Bring interface down.</strong> The Linux kernel enforces that a
+          network interface must be administratively down before its MAC register can be modified.
+          This is achieved with <span class="r-code">sudo ip link set eth0 down</span>. Attempting
+          to write the MAC while the interface is UP results in an
+          <span class="r-code">SIOCSIFHWADDR: Device or resource busy</span> error. Taking the
+          interface down also causes a brief loss of network connectivity, which is acceptable in
+          a lab setting.
+        </p>
+        <p>
+          <strong>Step 3 — Modify the MAC address.</strong> The MAC is changed using
+          <span class="r-code">sudo macchanger -m AA:BB:CC:11:22:33 eth0</span>. The
+          <span class="r-code">-m</span> flag specifies a manual target address — in a real
+          attack this would be an authorized MAC harvested through passive monitoring.
+          <span class="r-code">macchanger</span> confirms the change by displaying both the
+          original and faked MAC values and performing an OUI lookup to identify the vendor
+          associated with the new address.
+        </p>
+        <p>
+          <strong>Step 4 — Restore interface and verify.</strong> After the MAC register is
+          written, the interface is brought back up with <span class="r-code">sudo ip link set eth0 up</span>.
+          The new address is verified using both <span class="r-code">ifconfig eth0 | grep ether</span>
+          and <span class="r-code">sudo macchanger -s eth0</span>, which shows both the current
+          (software) MAC and the permanent (hardware EEPROM) MAC. The key observation is that
+          the permanent MAC remains unchanged — only the software register was modified.
+        </p>
+        <p>
+          <strong>Step 5 — Restore original MAC.</strong> The original MAC is restored using
+          <span class="r-code">sudo macchanger -p eth0</span>, which reads the permanent MAC
+          from the NIC's EEPROM and writes it back to the software register. The interface is
+          then cycled (<span class="r-code">ip link set eth0 down &amp;&amp; ip link set eth0 up</span>)
+          to apply the change, and a final <span class="r-code">macchanger -s</span> confirms
+          that both the current and permanent MACs now match, completing the demonstration.
+        </p>
+      </div>
+
+      <!-- 7. Results -->
+      <div class="report-section">
+        <h2>7. Results</h2>
+        <p>
+          The MAC address change was executed successfully in approximately 28 seconds from
+          initial command to verified change. After running
+          <span class="r-code">sudo macchanger -m aa:bb:cc:11:22:33 eth0</span> with the
+          interface taken down, the kernel immediately updated the software MAC register.
+          Verification with both <span class="r-code">ifconfig</span> and
+          <span class="r-code">macchanger -s</span> confirmed that the interface reported
+          <span class="r-code">AA:BB:CC:11:22:33</span> as its current MAC.
+          The OUI <span class="r-code">AA:BB:CC</span> was resolved to "Intel Corporate"
+          by <span class="r-code">macchanger</span>'s vendor database.
+        </p>
+        <p>
+          Critically, the <span class="r-code">macchanger -s</span> output showed that the
+          Permanent MAC field retained the original value <span class="r-code">52:6c:1e:3b:8a:4f</span>
+          throughout — confirming that only the software-layer MAC register was modified and
+          the hardware EEPROM was completely untouched. Restoration using
+          <span class="r-code">macchanger -p</span> brought both values back into agreement,
+          leaving no evidence of the spoofing operation.
+        </p>
+
+        <!-- Inline comparison table -->
+        <div class="table-wrap mt-16">
+          <table>
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Before Spoofing</th>
+                <th>After Spoofing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">MAC Address</td>
+                <td><span class="mono">52:6c:1e:3b:8a:4f</span></td>
+                <td><span class="mono">AA:BB:CC:11:22:33</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">Vendor Identified</td>
+                <td>Unknown</td>
+                <td>Intel Corporate</td>
+              </tr>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">Matches ACL</td>
+                <td style="color:var(--red);">✗ No</td>
+                <td style="color:var(--green);">✓ Yes</td>
+              </tr>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">Network Access</td>
+                <td style="color:var(--red);">Blocked</td>
+                <td style="color:var(--green);">Granted</td>
+              </tr>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">Permanent MAC unchanged</td>
+                <td>—</td>
+                <td style="color:var(--green);">✓ Confirmed</td>
+              </tr>
+              <tr>
+                <td style="color:var(--text-primary);font-weight:500;">Time to complete</td>
+                <td>—</td>
+                <td>~28 seconds</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 8. Security Analysis -->
+      <div class="report-section">
+        <h2>8. Security Analysis</h2>
+        <p>
+          The results expose four interconnected security weaknesses in MAC-based access control.
+          First, MAC addresses are inherently public information. The IEEE 802.11 standard requires
+          that management frames — including Probe Requests, Probe Responses, Association Requests,
+          and Beacon frames — carry the source and destination MAC addresses in cleartext. Any device
+          within radio range operating in passive monitor mode receives these frames without
+          associating with the network, silently building a complete picture of all authorized MACs.
+          This reconnaissance step is entirely undetectable because no packets are transmitted.
+        </p>
+        <p>
+          Second, the MAC address change mechanism is deliberately exposed by the Linux kernel as a
+          writable interface attribute. This is intentional: legitimate use cases such as MAC address
+          privacy randomization (mandated for client devices by modern operating systems to prevent
+          tracking) depend on this capability. The same mechanism used for privacy protection is
+          equally usable for impersonation. No exploit, kernel vulnerability, or specialized driver
+          is required — only root privileges and a standard system call.
+        </p>
+        <p>
+          Third, the attack generates no distinguishable log entries. Router DHCP logs, association
+          logs, and access control logs record the MAC address but carry no metadata indicating
+          whether it is a hardware-programmed or software-written value. The spoofed device's
+          connection event is logged identically to the legitimate device connecting. Without
+          additional telemetry such as 802.1X authentication records or RADIUS accounting, there is
+          no forensic signal to detect the intrusion.
+        </p>
+        <p>
+          Fourth, the attack leaves no persistent trace on the attacker's device. Since only the
+          kernel's runtime MAC register is modified, the permanent hardware MAC stored in the NIC's
+          EEPROM is unaffected. A single <span class="r-code">macchanger -p</span> command restores
+          the original state, making post-incident device forensics on the attacker's hardware
+          inconclusive without network-level logging of the spoofed MAC in use.
+        </p>
+      </div>
+
+      <!-- 9. Conclusion -->
+      <div class="report-section">
+        <h2>9. Conclusion</h2>
+        <p>
+          This project demonstrated that MAC address spoofing is a trivial, fast, and forensically
+          clean attack against networks that rely on MAC filtering for access control. Using only
+          standard Linux tools available on any Ubuntu installation, a MAC address can be changed
+          in under 30 seconds to impersonate any device whose MAC has been observed in passive
+          wireless traffic.
+        </p>
+        <p>
+          MAC filtering provides a false sense of security. It operates on the assumption that a
+          hardware identifier is difficult to forge — an assumption that was always architecturally
+          unsound and is definitively disproven by this demonstration. The access control is trivially
+          bypassed by any attacker with root access to a Linux machine and visibility to Wi-Fi traffic.
+        </p>
+        <p>
+          The recommended solution is 802.1X port-based Network Access Control (NAC) with EAP-TLS or
+          PEAP authentication backed by a RADIUS server. This approach replaces the unauthenticated
+          hardware identifier with a cryptographic proof of identity — a certificate or credential that
+          cannot be cloned by observing network traffic. While more complex to deploy, 802.1X is the
+          industry-standard solution for this class of vulnerability and is supported by all modern
+          enterprise network equipment. For environments where 802.1X is impractical, MAC filtering
+          should be used only as a defense-in-depth measure in combination with strong wireless
+          encryption and network segmentation, never as a sole access control.
+        </p>
+      </div>
+
+      <!-- 10. References -->
+      <div class="report-section">
+        <h2>10. References</h2>
+        <ol class="ref-list">
+          <li>
+            <span class="ref-num">[1]</span>
+            IEEE Std 802.11-2020, "IEEE Standard for Information Technology — Telecommunications
+            and Information Exchange Between Systems Local and Metropolitan Area Networks —
+            Specific Requirements Part 11: Wireless LAN Medium Access Control (MAC) and Physical
+            Layer (PHY) Specifications," IEEE, New York, NY, USA, 2020.
+          </li>
+          <li>
+            <span class="ref-num">[2]</span>
+            IEEE Std 802-2014, "IEEE Standard for Local and Metropolitan Area Networks:
+            Overview and Architecture," IEEE, New York, NY, USA, 2014.
+          </li>
+          <li>
+            <span class="ref-num">[3]</span>
+            D. Plummer, "An Ethernet Address Resolution Protocol: Or Converting Network Protocol
+            Addresses to 48-bit Ethernet Address for Transmission on Ethernet Hardware,"
+            RFC 826, Internet Engineering Task Force, November 1982.
+          </li>
+          <li>
+            <span class="ref-num">[4]</span>
+            S. Cheshire, "IPv4 Address Conflict Detection," RFC 5227, Internet Engineering
+            Task Force, July 2008.
+          </li>
+          <li>
+            <span class="ref-num">[5]</span>
+            A. Lopez Ortega, macchanger(1) — Linux Manual Page, GNU macchanger version 1.7.0,
+            Free Software Foundation.
+          </li>
+          <li>
+            <span class="ref-num">[6]</span>
+            iproute2 project, ip-link(8) — Linux Manual Page, iproute2 version 6.1, Linux
+            kernel networking utilities.
+          </li>
+          <li>
+            <span class="ref-num">[7]</span>
+            W. A. Arbaugh, N. Shankar, and Y. C. J. Wan, "Your 802.11 Wireless Network Has No
+            Clothes," IEEE Wireless Communications, vol. 9, no. 6, pp. 44–51, December 2002.
+          </li>
+          <li>
+            <span class="ref-num">[8]</span>
+            Canonical Ltd., Ubuntu 22.04 LTS (Jammy Jellyfish) Server Guide and Release
+            Documentation, Canonical Ltd., 2022. Available online at ubuntu.com/server/docs.
+          </li>
+        </ol>
+      </div>
+
+    </div><!-- /report-content -->
+  </main>
+</div>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

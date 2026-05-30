@@ -1,0 +1,125 @@
+@media print {
+  /* Hide all navigation and chrome */
+  .sidebar,
+  .topbar,
+  .print-btn-wrap,
+  .terminal-controls,
+  nav {
+    display: none !important;
+  }
+
+  /* Reset layout — no sidebar margin */
+  .main-wrapper {
+    margin-left: 0 !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+  }
+
+  /* White background, black text */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .report-content {
+    max-width: 100%;
+    color: #000000;
+  }
+
+  /* Force readable font size */
+  body {
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2.5cm;
+  }
+
+  /* Page break before each major section */
+  .report-section h2 {
+    page-break-before: always;
+    color: #000000;
+    border-bottom: 1pt solid #cccccc;
+  }
+
+  /* Don't break cover */
+  .report-cover {
+    page-break-before: avoid;
+    page-break-after: always;
+    border-bottom: 2pt solid #cccccc;
+    color: #000000;
+  }
+
+  /* First h2 shouldn't force a page break */
+  .report-section:first-of-type h2 {
+    page-break-before: avoid;
+  }
+
+  /* Cards and panels — white, no box shadow */
+  .card, .panel, .code-block, .table-wrap, .mini-table-wrap {
+    background: #ffffff !important;
+    border: 1pt solid #cccccc !important;
+    box-shadow: none !important;
+  }
+
+  /* Links — show as plain text, not colored */
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  a[href]::after {
+    content: "" !important;
+  }
+
+  /* Tables — printable */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  thead th, tbody td {
+    border: 1pt solid #cccccc;
+    padding: 6pt 10pt;
+    color: #000000;
+    background: #ffffff !important;
+  }
+
+  thead th {
+    background: #f0f0f0 !important;
+    font-weight: bold;
+  }
+
+  /* Text colors override */
+  .text-secondary, .text-muted, p, li, td, th {
+    color: #222222 !important;
+  }
+
+  .report-main-title { color: #000000 !important; font-size: 24pt; }
+  .report-subtitle   { color: #333333 !important; }
+  .meta-item         { color: #555555 !important; }
+  .meta-item span    { color: #333333 !important; }
+  .ref-num           { color: #000000 !important; }
+
+  /* Code inline */
+  .r-code, code, .mono {
+    background: #f4f4f4 !important;
+    border: 1pt solid #cccccc !important;
+    color: #000000 !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+  }
+
+  /* Avoid orphaned headings */
+  h2, h3 { page-break-after: avoid; }
+
+  /* Avoid table row breaks across pages */
+  tr { page-break-inside: avoid; }
+
+  /* Section body should not break mid-paragraph if possible */
+  p { page-break-inside: avoid; orphans: 3; widows: 3; }
+}

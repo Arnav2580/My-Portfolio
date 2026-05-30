@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAC Address Spoofing — Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-logo">⬡</span>
+    <span class="sidebar-title">MAC Spoofing</span>
+    <button class="sidebar-collapse" id="sidebar-toggle" title="Toggle sidebar">‹</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-link">
+      <span class="nav-icon">◈</span>
+      <span class="nav-text">Overview</span>
+    </a>
+    <a href="methodology.html" class="nav-link">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">Methodology</span>
+    </a>
+    <a href="demo.html" class="nav-link">
+      <span class="nav-icon">▶</span>
+      <span class="nav-text">Live Demo</span>
+    </a>
+    <a href="results.html" class="nav-link">
+      <span class="nav-icon">◎</span>
+      <span class="nav-text">Results</span>
+    </a>
+    <a href="report.html" class="nav-link">
+      <span class="nav-icon">☰</span>
+      <span class="nav-text">Report</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="theme-icon">☀</span>
+      <span class="theme-label">Light mode</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ═══════════════════════ MAIN WRAPPER ═══════════════════════ -->
+<div class="main-wrapper">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-title">Overview</div>
+    <div class="topbar-right">
+      <span class="badge badge-amber">WSL Ubuntu · Educational Environment</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- Ethical disclaimer -->
+    <div class="disclaimer">
+      ⚠️ &nbsp;This project is for educational purposes only. MAC address spoofing
+      on networks you do not own or have explicit permission to test is illegal.
+      All demonstrations use a controlled WSL Ubuntu environment.
+    </div>
+
+    <!-- Stat cards -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-label">OSI Layer</div>
+        <div class="stat-value">2 — Data Link</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Attack Complexity</div>
+        <div class="stat-value">LOW</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Time to Execute</div>
+        <div class="stat-value">~30 seconds</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bypass Success</div>
+        <div class="stat-value">~100%</div>
+      </div>
+    </div>
+
+    <!-- What is a MAC Address? -->
+    <div class="section">
+      <h2 class="section-title">What is a MAC Address?</h2>
+      <div class="card prose">
+        <p>
+          A MAC (Media Access Control) address is a 48-bit identifier permanently
+          assigned to every network interface card (NIC) by its manufacturer. Unlike IP
+          addresses, which are assigned dynamically by network infrastructure, MAC addresses
+          are embedded at the hardware level and are intended to be globally unique. The
+          address is expressed as six pairs of hexadecimal digits separated by colons or
+          hyphens — for example, <span class="mono">52:6C:1E:3B:8A:4F</span> — giving
+          a total address space of approximately 281 trillion unique values.
+        </p>
+        <p>
+          The address is split into two parts: the first 24 bits (3 octets) form the OUI
+          (Organizationally Unique Identifier), which identifies the manufacturer and is
+          registered with the IEEE. The remaining 24 bits are assigned by the manufacturer
+          to uniquely identify each device within their product line. The IEEE maintains a
+          public registry mapping OUI prefixes to their corresponding organizations, making
+          it possible to identify the vendor of any NIC from its MAC address alone.
+        </p>
+        <p>
+          MAC addresses operate at Layer 2 of the OSI model — the Data Link layer. Every
+          packet transmitted on a local network contains the source and destination MAC in
+          its frame header, and network switches use MAC address tables to forward traffic
+          only to the correct port. Unlike IP addresses, MAC addresses are not routed
+          across networks; they are only relevant within a single broadcast domain (local
+          network segment). This layer-2 scope is both their strength as a local identifier
+          and a fundamental constraint on their security utility.
+        </p>
+      </div>
+    </div>
+
+    <!-- MAC Anatomy Visual -->
+    <div class="section">
+      <h2 class="section-title">MAC Address Anatomy</h2>
+      <div class="mac-anatomy">
+        <div class="mac-display">
+          <div class="mac-part mac-part-oui">AA:BB:CC</div>
+          <div class="mac-sep">&nbsp;:&nbsp;</div>
+          <div class="mac-part mac-part-device">11:22:33</div>
+        </div>
+
+        <div class="mac-labels">
+          <div class="mac-label-oui">
+            <div class="mac-label-key">OUI — Manufacturer Identifier</div>
+            <div class="mac-label-desc">First 24 bits · Registered with IEEE · Identifies vendor</div>
+          </div>
+          <div class="mac-label-device">
+            <div class="mac-label-key">Device ID — Unique per unit</div>
+            <div class="mac-label-desc">Last 24 bits · Assigned by manufacturer · Serial-like value</div>
+          </div>
+        </div>
+
+        <div class="mac-octets">
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--blue)">AA</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--blue)">BB</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--blue)">CC</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--green)">11</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--green)">22</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+          <div class="octet-box">
+            <span class="octet-val" style="color:var(--green)">33</span>
+            <span class="octet-bits">8 bits</span>
+          </div>
+        </div>
+        <p style="margin-top:14px;font-size:12px;color:var(--text-muted)">
+          Total: 6 octets × 8 bits = 48 bits — expressed as 12 hexadecimal digits
+        </p>
+      </div>
+    </div>
+
+    <!-- The Problem — Why MAC Filtering Fails -->
+    <div class="section">
+      <h2 class="section-title">The Problem — Why MAC Filtering Fails</h2>
+      <div class="two-cols">
+
+        <!-- Left: How it's supposed to work -->
+        <div class="col-card">
+          <div class="col-title">How MAC Filtering Is Supposed to Work</div>
+          <ul class="flow-list">
+            <li class="flow-item" data-step="1">
+              <span class="flow-text">Device connects to Wi-Fi access point</span>
+            </li>
+            <li class="flow-item" data-step="2">
+              <span class="flow-text">Router reads the device's MAC address from the 802.11 frame header</span>
+            </li>
+            <li class="flow-item" data-step="3">
+              <span class="flow-text">Router checks MAC address against its Access Control List (ACL)</span>
+            </li>
+            <li class="flow-item" data-step="4">
+              <span class="flow-text">If MAC matches → access granted. If not → connection rejected.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: What actually happens -->
+        <div class="col-card">
+          <div class="col-title">What Actually Happens with Spoofing</div>
+          <ul class="flow-list">
+            <li class="flow-item flow-danger" data-step="0">
+              <span class="flow-text danger">
+                ⚠️ Attacker passively listens — authorized MAC addresses are broadcast
+                in cleartext in every 802.11 management frame. No connection needed.
+              </span>
+            </li>
+            <li class="flow-item" data-step="1">
+              <span class="flow-text">Attacker clones authorized MAC into kernel using <span class="mono">macchanger</span></span>
+            </li>
+            <li class="flow-item" data-step="2">
+              <span class="flow-text">Spoofed device connects to Wi-Fi access point</span>
+            </li>
+            <li class="flow-item" data-step="3">
+              <span class="flow-text">Router reads spoofed MAC — it matches ACL entry. Attacker gains access.</span>
+            </li>
+            <li class="flow-item" data-step="4">
+              <span class="flow-text">Network granted to attacker. Event appears identical to legitimate device.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quick nav footer -->
+    <div style="display:flex;gap:12px;margin-top:8px;">
+      <a href="methodology.html" class="btn">⚙ View Methodology →</a>
+      <a href="demo.html" class="btn btn-primary">▶ Run Demo →</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

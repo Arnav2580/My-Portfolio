@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAC Address Spoofing — Live Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-logo">⬡</span>
+    <span class="sidebar-title">MAC Spoofing</span>
+    <button class="sidebar-collapse" id="sidebar-toggle" title="Toggle sidebar">‹</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-link">
+      <span class="nav-icon">◈</span>
+      <span class="nav-text">Overview</span>
+    </a>
+    <a href="methodology.html" class="nav-link">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">Methodology</span>
+    </a>
+    <a href="demo.html" class="nav-link">
+      <span class="nav-icon">▶</span>
+      <span class="nav-text">Live Demo</span>
+    </a>
+    <a href="results.html" class="nav-link">
+      <span class="nav-icon">◎</span>
+      <span class="nav-text">Results</span>
+    </a>
+    <a href="report.html" class="nav-link">
+      <span class="nav-icon">☰</span>
+      <span class="nav-text">Report</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="theme-icon">☀</span>
+      <span class="theme-label">Light mode</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ═══════════════════════ MAIN WRAPPER ═══════════════════════ -->
+<div class="main-wrapper">
+
+  <header class="topbar">
+    <div class="topbar-title">Live Demo — Terminal Simulator</div>
+    <div class="topbar-right">
+      <span class="badge badge-amber">WSL Ubuntu · Educational Environment</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- Subtitle -->
+    <p style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;line-height:1.6;">
+      Interactive simulation of the full MAC spoofing workflow. The actual live demonstration
+      runs in WSL Ubuntu using these exact commands.
+    </p>
+
+    <!-- Progress indicator -->
+    <div class="progress-wrap">
+      <div class="progress-nodes">
+        <div class="p-node" id="pn-1">
+          <div class="p-dot">1</div>
+          <div class="p-label">View</div>
+        </div>
+        <div class="p-node" id="pn-2">
+          <div class="p-dot">2</div>
+          <div class="p-label">Spoof</div>
+        </div>
+        <div class="p-node" id="pn-3">
+          <div class="p-dot">3</div>
+          <div class="p-label">Verify</div>
+        </div>
+        <div class="p-node" id="pn-4">
+          <div class="p-dot">4</div>
+          <div class="p-label">Restore</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo layout: terminal (58%) + panels (42%) -->
+    <div class="demo-layout">
+
+      <!-- Terminal -->
+      <div>
+        <div class="terminal-wrapper">
+          <div class="terminal-titlebar">
+            <div class="term-dots">
+              <div class="dot dot-red"></div>
+              <div class="dot dot-yellow"></div>
+              <div class="dot dot-green"></div>
+            </div>
+            <div class="term-title">user@Ubuntu: ~/mac-spoof</div>
+          </div>
+          <div class="terminal-body" id="terminal-output">
+            <span class="t-cursor" id="terminal-cursor"></span>
+          </div>
+        </div>
+
+        <!-- Control buttons -->
+        <div class="terminal-controls">
+          <button class="btn" id="btn-step1">▶ Step 1: View MAC</button>
+          <button class="btn" id="btn-step2">⇄ Step 2: Change MAC</button>
+          <button class="btn" id="btn-step3">↩ Step 3: Verify &amp; Restore</button>
+          <button class="btn" id="btn-reset" style="margin-left:auto;">↺ Reset</button>
+        </div>
+      </div>
+
+      <!-- Status panels -->
+      <div class="status-panels">
+
+        <!-- Interface Status -->
+        <div class="panel">
+          <div class="panel-title">Interface Status — eth0 (WSL virtual adapter)</div>
+          <div class="panel-row">
+            <span class="panel-key">Original MAC</span>
+            <span class="panel-val" style="color:var(--text-muted);">52:6c:1e:3b:8a:4f</span>
+          </div>
+          <div class="panel-row">
+            <span class="panel-key">Current MAC</span>
+            <span class="panel-val" id="panel-current-mac">52:6c:1e:3b:8a:4f</span>
+          </div>
+          <div class="panel-row">
+            <span class="panel-key">Status</span>
+            <span class="panel-val" id="panel-status">
+              <span class="badge badge-green">UP</span>
+            </span>
+          </div>
+          <div class="panel-row">
+            <span class="panel-key">Spoofed</span>
+            <span class="panel-val" id="panel-spoofed">
+              <span class="badge badge-gray">NO</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- MAC Lookup -->
+        <div class="panel">
+          <div class="panel-title">MAC OUI Lookup</div>
+          <div class="panel-row">
+            <span class="panel-key">Vendor</span>
+            <span class="panel-val" id="panel-vendor">
+              <strong>52:6C:1E</strong> &mdash; Unknown vendor
+            </span>
+          </div>
+          <p class="panel-note">
+            MAC OUI lookup identifies the manufacturer from the first 3 octets.
+            Locally administered MACs (bit 1 of octet 1 = 1) may show as Unknown.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Action log -->
+    <div class="action-log-wrap">
+      <div class="action-log-header">Action Log</div>
+      <div class="table-wrap" style="border:none;border-radius:0;">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Action</th>
+              <th>Before</th>
+              <th>After</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="log-body">
+            <!-- Rows appended by terminal.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:20px;">
+      <a href="methodology.html" class="btn">← Methodology</a>
+      <a href="results.html" class="btn btn-primary">◎ View Results →</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/terminal.js"></script>
+</body>
+</html>

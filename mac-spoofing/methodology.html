@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAC Address Spoofing — Methodology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-logo">⬡</span>
+    <span class="sidebar-title">MAC Spoofing</span>
+    <button class="sidebar-collapse" id="sidebar-toggle" title="Toggle sidebar">‹</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-link">
+      <span class="nav-icon">◈</span>
+      <span class="nav-text">Overview</span>
+    </a>
+    <a href="methodology.html" class="nav-link">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-text">Methodology</span>
+    </a>
+    <a href="demo.html" class="nav-link">
+      <span class="nav-icon">▶</span>
+      <span class="nav-text">Live Demo</span>
+    </a>
+    <a href="results.html" class="nav-link">
+      <span class="nav-icon">◎</span>
+      <span class="nav-text">Results</span>
+    </a>
+    <a href="report.html" class="nav-link">
+      <span class="nav-icon">☰</span>
+      <span class="nav-text">Report</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="theme-icon">☀</span>
+      <span class="theme-label">Light mode</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ═══════════════════════ MAIN WRAPPER ═══════════════════════ -->
+<div class="main-wrapper">
+
+  <header class="topbar">
+    <div class="topbar-title">Methodology</div>
+    <div class="topbar-right">
+      <span class="badge badge-amber">WSL Ubuntu · Educational Environment</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- Tools table -->
+    <div class="section">
+      <h2 class="section-title">Tools</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Version</th>
+              <th>Purpose</th>
+              <th>Install Command</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="mono">ifconfig</span></td>
+              <td><span class="mono">net-tools 2.10</span></td>
+              <td>View current MAC address and interface details</td>
+              <td><code>sudo apt install net-tools</code></td>
+            </tr>
+            <tr>
+              <td><span class="mono">ip link</span></td>
+              <td><span class="mono">iproute2 6.1</span></td>
+              <td>Modify MAC address, bring interfaces up/down</td>
+              <td><span style="color:var(--text-muted);font-size:12px;">pre-installed in Ubuntu</span></td>
+            </tr>
+            <tr>
+              <td><span class="mono">macchanger</span></td>
+              <td><span class="mono">1.7.0</span></td>
+              <td>Change MAC (specific/random/restore), OUI lookup</td>
+              <td><code>sudo apt install macchanger</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Lab environment -->
+    <div class="section">
+      <h2 class="section-title">Lab Environment</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--text-primary);font-weight:500;">Operating System</td>
+              <td><span class="mono">Ubuntu 22.04 LTS (WSL2)</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-primary);font-weight:500;">Network Interface</td>
+              <td><span class="mono">eth0 (WSL virtual adapter)</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-primary);font-weight:500;">Privilege Required</td>
+              <td><span class="mono">sudo / root</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-primary);font-weight:500;">Host OS</td>
+              <td><span class="mono">Windows 11</span></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-primary);font-weight:500;">Terminal</td>
+              <td><span class="mono">Windows Terminal</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Step-by-step procedure -->
+    <div class="section">
+      <h2 class="section-title">Step-by-Step Procedure</h2>
+      <div class="step-cards">
+
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">View Current MAC Address</div>
+            <p class="step-desc">
+              Before making any changes, record the original MAC address using
+              <span class="mono">ifconfig</span>. This value is also the permanent hardware
+              MAC stored in the NIC's firmware and will be used as a baseline to confirm
+              successful spoofing and later restoration.
+            </p>
+            <div class="code-block"><span class="cb-cmd">ifconfig eth0 | grep ether</span></div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Install Required Tools</div>
+            <p class="step-desc">
+              <span class="mono">macchanger</span> must be installed separately. The
+              <span class="mono">ip</span> and <span class="mono">ifconfig</span> utilities
+              handle interface management and are part of <span class="mono">iproute2</span>
+              and <span class="mono">net-tools</span> respectively. On Ubuntu, install both
+              with a single <span class="mono">apt</span> command.
+            </p>
+            <div class="code-block"><span class="cb-comment"># Update package index first</span>
+<span class="cb-cmd">sudo apt update
+sudo apt install net-tools macchanger -y</span></div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Bring the Interface Down</div>
+            <p class="step-desc">
+              The Linux kernel does not allow MAC address modification on an active interface.
+              The interface must be taken offline before the MAC register can be written. This
+              is enforced at the kernel driver level — attempting to change the MAC while the
+              interface is UP results in an error: <span class="mono">SIOCSIFHWADDR: Device
+              or resource busy</span>.
+            </p>
+            <div class="code-block"><span class="cb-cmd">sudo ip link set eth0 down</span></div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-title">Change the MAC Address</div>
+            <p class="step-desc">
+              Two methods are available: manual via <span class="mono">ip link</span>
+              (direct kernel register write) or via <span class="mono">macchanger</span>
+              (a higher-level tool with vendor OUI lookup, random generation, and permanent
+              MAC restore). Both methods modify the same kernel software MAC register.
+              <span class="mono">macchanger</span> additionally verifies and displays the
+              before/after state.
+            </p>
+            <div class="code-block"><span class="cb-comment">Method A — set a specific MAC with ip link:</span>
+<span class="cb-cmd">sudo ip link set eth0 address AA:BB:CC:11:22:33</span>
+
+<span class="cb-comment">Method B — set a specific MAC using macchanger (preferred):</span>
+<span class="cb-cmd">sudo macchanger -m AA:BB:CC:11:22:33 eth0</span></div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-title">Bring Interface Back Up and Verify</div>
+            <p class="step-desc">
+              After the MAC is written to the kernel register, bring the interface back online.
+              The new address will be visible to all network devices — the OS will use it in
+              every outbound frame. Verify with both <span class="mono">ifconfig</span> and
+              <span class="mono">macchanger -s</span> to confirm the software MAC and
+              permanent MAC values.
+            </p>
+            <div class="code-block"><span class="cb-cmd">sudo ip link set eth0 up
+ifconfig eth0 | grep ether
+sudo macchanger -s eth0</span></div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <div class="step-title">Restore Original MAC</div>
+            <p class="step-desc">
+              <span class="mono">macchanger</span> stores the permanent (hardware) MAC
+              read from the NIC's EEPROM at startup, and can restore it with the
+              <span class="mono">-p</span> flag. Always restore after testing to avoid
+              interface identification issues. The interface must be cycled down/up after
+              restoration for the change to take effect in the kernel.
+            </p>
+            <div class="code-block"><span class="cb-cmd">sudo macchanger -p eth0
+sudo ip link set eth0 down &amp;&amp; sudo ip link set eth0 up
+sudo macchanger -s eth0</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="section">
+      <h2 class="section-title">Quick Reference — All Commands</h2>
+      <div class="code-block"><span class="cb-comment"># Install tools</span>
+<span class="cb-cmd">sudo apt install net-tools macchanger -y</span>
+
+<span class="cb-comment"># View current MAC</span>
+<span class="cb-cmd">ifconfig eth0 | grep ether</span>
+
+<span class="cb-comment"># Bring interface down (required before MAC change)</span>
+<span class="cb-cmd">sudo ip link set eth0 down</span>
+
+<span class="cb-comment"># Change to specific MAC</span>
+<span class="cb-cmd">sudo macchanger -m AA:BB:CC:11:22:33 eth0</span>
+
+<span class="cb-comment"># Bring interface back up</span>
+<span class="cb-cmd">sudo ip link set eth0 up</span>
+
+<span class="cb-comment"># Verify change</span>
+<span class="cb-cmd">sudo macchanger -s eth0</span>
+
+<span class="cb-comment"># Restore original hardware MAC</span>
+<span class="cb-cmd">sudo macchanger -p eth0</span></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:8px;">
+      <a href="index.html" class="btn">← Overview</a>
+      <a href="demo.html" class="btn btn-primary">▶ Live Demo →</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/nav.js"></script>
+</body>
+</html>
