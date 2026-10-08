@@ -53,7 +53,7 @@ export const roles = [
     name: "Aerospacizm",
     initial: "A",
     role: "Co-founder",
-    date: "Oct 2020 — Jun 2024",
+    date: "Nov 2020 — Jun 2024",
     status: "Student aerospace group · Concluded",
     body: 'We are a group of High school students connected through social media platforms And we are from various parts of India. We used to have meetings on the weekends. As of now we are working on a advanced hydro-rocket named "DHRAVAM" eventually will move on to solid rockets.',
     note: "",

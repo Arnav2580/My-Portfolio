@@ -22,16 +22,16 @@ export function ProjectVideo({ project }: { project: Project }) {
         >
           <img
             className="project-video-poster"
-            src={`https://i.ytimg.com/vi/${project.youtubeId}/hqdefault.jpg`}
+            src={
+              project.image ||
+              `https://i.ytimg.com/vi/${project.youtubeId}/hqdefault.jpg`
+            }
             alt=""
             loading="lazy"
           />
-          <span className="video-play-icon" aria-hidden="true">
-            ▶
+          <span className="project-video-watch">
+            <span aria-hidden="true">▶</span> Watch the walkthrough
           </span>
-          <span className="eyebrow">PROJECT WALKTHROUGH</span>
-          <strong>{project.title}</strong>
-          <span>Watch the project in action</span>
         </button>
       )}
     </div>

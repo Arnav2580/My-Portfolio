@@ -48,9 +48,9 @@ export const earlyProjects: Project[] = [
     date: "2021–2022",
     year: 2022,
     art: "network",
-    image: "/assets/projects/green-power-house-plant/plant-experiment.jpeg",
-    imageAlt:
-      "Arnav testing an electrode arrangement in potted plants with a multimeter.",
+    image:
+      "/assets/projects/green-power-house-plant/plant-experiment-cropped.jpeg",
+    imageAlt: "Potted plants and connecting wires in the electrode experiment.",
     summary:
       "An early exploration of plants, soil, electrodes and electrical measurements.",
     description:
@@ -72,9 +72,9 @@ export const earlyProjects: Project[] = [
     ],
     gallery: [
       {
-        src: "/assets/projects/green-power-house-plant/plant-experiment.jpeg",
-        alt: "Arnav demonstrating the potted-plant electrode experiment.",
-        caption: "An early demonstration with potted plants and a multimeter.",
+        src: "/assets/projects/green-power-house-plant/plant-experiment-cropped.jpeg",
+        alt: "Detail of the potted-plant electrode experiment.",
+        caption: "The potted-plant setup, cropped to focus on the experiment.",
       },
       {
         src: "/assets/projects/green-power-house-plant/electrode-setup.jpeg",

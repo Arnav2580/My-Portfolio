@@ -51,6 +51,71 @@
   display: flex;
   gap: 2px;
 }
+.theme-control {
+  position: relative;
+}
+.theme-hint {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: min(248px, calc(100vw - 90px));
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: 0 10px 30px #00000016;
+  animation: theme-hint-enter 220ms ease-out;
+}
+.theme-hint::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 17px;
+  width: 8px;
+  height: 8px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+.theme-hint p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.theme-hint p span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.theme-hint button {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  cursor: pointer;
+}
+@keyframes theme-hint-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-hint {
+    animation: none;
+  }
+}
 .menu-toggle {
   display: none;
 }

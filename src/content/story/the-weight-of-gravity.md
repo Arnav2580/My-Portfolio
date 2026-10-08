@@ -29,7 +29,7 @@ There was no dramatic collapse. There was simply not enough product-market fit. 
 
 Event Union ended, and I had to accept that effort alone does not create demand.
 
-Around the same period, I had also co-founded Aerospacizm with high-school students from different parts of India. The project had grown out of the fascination that had started with rockets, weather balloons, and the Mars rover years earlier. During the lockdown era, while remote work and remote learning had pushed collaboration onto screens, Aerospacizm took shape as a remote aerospace group. We worked on aerospace research and experimentation, including advanced water rockets called DHRAVAM, and collected data on vibration, pressure, apogee, and other parameters. We tried to approach the subject seriously rather than treating it only as a hobby.
+Earlier, around November 2020 during the COVID lockdown, I had co-founded Aerospacizm with high-school students from different parts of India. The project had grown out of the fascination that had started with rockets, weather balloons, and the Mars rover years earlier. During the lockdown era, while remote work and remote learning had pushed collaboration onto screens, Aerospacizm took shape as a remote aerospace group. We worked on aerospace research and experimentation, including advanced water rockets called DHRAVAM, and collected data on vibration, pressure, apogee, and other parameters. We tried to approach the subject seriously rather than treating it only as a hobby.
 
 Eventually, exams and the absence of a clear long-term direction brought Aerospacizm to an end.
 

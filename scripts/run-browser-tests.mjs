@@ -55,6 +55,7 @@ try {
   }
   if (!ready) throw new Error("Preview server did not become ready.");
   for (const file of [
+    "theme",
     "site",
     "honors",
     "project-media",

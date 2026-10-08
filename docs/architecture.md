@@ -41,7 +41,7 @@ YouTube embeds load only after interaction. Portraits and galleries use Next Ima
 - Keep business/personal records in `content/data`, not duplicated across pages.
 - Shared reusable UI goes in `components/ui`; keep feature-specific UI inside its feature.
 - Do not place private source documents, credentials, full external repositories or raw working media under `public/`.
-- Preserve the autobiography verbatim. The unit test compares its reconstructed SHA-256 against the supplied manuscript.
+- Preserve the autobiography verbatim. The unit test compares its reconstructed SHA-256 against the approved manuscript, including the November 2020 Aerospacizm date correction.
 - Keep intentional attribution intact; project credits are distinct from portfolio ownership.
 
 ## Validation boundaries

@@ -42,12 +42,18 @@
   object-fit: cover;
   z-index: -2;
 }
-.project-video-start::before {
-  content: "";
+.project-video-watch {
   position: absolute;
-  inset: 0;
-  background: #081018bd;
-  z-index: -1;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #ffffff60;
+  border-radius: 99px;
+  background: #081018e6;
+  color: white;
 }
 .project-video-start .video-play-icon {
   color: #fff;

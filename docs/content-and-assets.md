@@ -80,3 +80,9 @@ The featured college speech is configured in `featuredSpeech` in the same honors
 Story companion recordings sit outside the verbatim manuscript in the first chapter. The doorbell also has an ordinary project entry and recording in its existing honor.
 
 Projects with YouTube recordings use playable video cards and video-first detail pages; screenshots appear below the introduction. Bhu_dhrishti and NeckLink have supplied dashboard screenshots. Seven selected S3 screenshots cover upload, Lambda, DynamoDB, IAM, HTTPS policy, KMS and monitoring; duplicate, incomplete setup and error captures were removed.
+
+### Approved content correction ? 8 October 2026
+
+Arnav clarified that Aerospacizm was co-founded around November 2020 during the COVID lockdown, before college. The experience date and the opening sentence of its Chapter Two passage reflect this correction; the remaining manuscript is unchanged. The story integrity hash was updated for this approved sentence edit.
+
+The Green Power House Plant group photo is cropped to its right-hand plant setup, excluding Arnav. The original remains in the source archive; only the cropped version is published.

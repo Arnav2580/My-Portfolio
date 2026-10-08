@@ -10,7 +10,7 @@ const valid = {
   message: "A thoughtful test message.",
   requestId: "12345678-1234-4123-8123-123456789abc",
 };
-test("Story chapters preserve the supplied autobiography exactly", () => {
+test("Story chapters preserve the manuscript with Arnav's approved date correction", () => {
   const slugs = [
     "the-architecture-of-becoming",
     "the-weight-of-gravity",
@@ -21,7 +21,7 @@ test("Story chapters preserve the supplied autobiography exactly", () => {
     .join("");
   assert.equal(
     createHash("sha256").update(joined).digest("hex"),
-    "62130a0fad7aa734ab0cb316583e74594a73c3c39698db34c8f8d73564eb1a74",
+    "470c304ba2774f7be9b45e0becb86692769716d6fe48193e75e6a90e47174213",
   );
 });
 test("Valid contact input is normalized", () => {
