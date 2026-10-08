@@ -27,7 +27,8 @@ export function ProjectGrid({ limit }: { limit?: number }) {
     origin.current?.focus();
   }
   let items = projects.filter((p) => filter === "All" || p.category === filter);
-  if (sort === "recent") items = [...items].sort((a, b) => b.year - a.year);
+  if (sort === "recent")
+    items = [...items].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
   if (limit) items = items.slice(0, limit);
   return (
     <>
@@ -42,6 +43,7 @@ export function ProjectGrid({ limit }: { limit?: number }) {
               "Spatial systems",
               "Blockchain",
               "Hardware & prototypes",
+              "Aerospace concepts",
             ].map((f) => (
               <button
                 key={f}

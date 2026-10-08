@@ -41,6 +41,12 @@ try {
       "neuro-symbolic-reasoning",
       "automatic-doorbell",
       "secure-data-pipeline",
+      "green-power-house-plant",
+      "science-in-trash",
+      "atmospheric-water-harvesting",
+      "solution-to-garbage",
+      "aaryasat",
+      "crowdcast",
     ]) {
       await page.goto("http://127.0.0.1:3000/projects/" + slug);
       await expect(page.locator(".project-demo")).toHaveCount(0);
@@ -48,6 +54,27 @@ try {
         const video = await page.locator(".project-video").boundingBox();
         const gallery = await page.locator(".project-gallery").boundingBox();
         expect(video.y + video.height).toBeLessThan(gallery.y);
+      }
+      const counts = {
+        "green-power-house-plant": 2,
+        "science-in-trash": 4,
+        "atmospheric-water-harvesting": 1,
+        "solution-to-garbage": 1,
+        "probabilistic-ml": 3,
+        "neuro-symbolic-reasoning": 1,
+        crowdcast: 1,
+      };
+      if (counts[slug]) {
+        await expect(
+          page.locator(".project-gallery-thumbnails button"),
+        ).toHaveCount(counts[slug]);
+        await expect(page.locator(".project-gallery-image img")).toBeVisible();
+      }
+      if (slug === "aaryasat") {
+        await expect(page.locator(".project-details")).toContainText(
+          "design concept",
+        );
+        await expect(page.locator(".project-video")).toHaveCount(0);
       }
       if (slug === "secure-data-pipeline") {
         await expect(

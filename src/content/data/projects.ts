@@ -1,9 +1,10 @@
+import { earlyProjects } from "./early-projects";
 export type Project = {
   slug: string;
   title: string;
   category: string;
   date: string;
-  year: number;
+  year: number | null;
   summary: string;
   description: string;
   contribution: string;
@@ -155,6 +156,14 @@ export const projects: Project[] = [
   },
   {
     slug: "crowdcast",
+    gallery: [
+      {
+        src: "/assets/projects/crowdcast/feature-correlation.png",
+        alt: "Correlation heatmap of hotel features and a constructed demand score.",
+        caption:
+          "Exploratory feature correlations in the local dataset; this is not a measure of forecasting accuracy.",
+      },
+    ],
     title: "CrowdCast",
     category: "AI & systems",
     date: "Sep — Oct 2025",
@@ -177,6 +186,26 @@ export const projects: Project[] = [
   },
   {
     slug: "probabilistic-ml",
+    gallery: [
+      {
+        src: "/assets/projects/probabilistic-ml/blr-calibration.png",
+        alt: "Bayesian linear regression IID calibration curve compared with ideal calibration.",
+        caption:
+          "Bayesian linear regression: calibration on the saved IID evaluation.",
+      },
+      {
+        src: "/assets/projects/probabilistic-ml/gp-calibration.png",
+        alt: "RBF Gaussian process IID calibration curve.",
+        caption:
+          "RBF Gaussian process: a different uncertainty profile on the IID split.",
+      },
+      {
+        src: "/assets/projects/probabilistic-ml/kernel-comparison.png",
+        alt: "Saved comparison of negative log likelihood and interval coverage for three Gaussian process kernels.",
+        caption:
+          "Kernel comparison from the saved experimental run; NLL and coverage use different scales.",
+      },
+    ],
     image: "/assets/projects/probabilistic-ml/uncertainty-results.jpeg",
     imageAlt:
       "Original portfolio figure comparing GP kernel metrics and GP and Bayesian linear regression calibration.",
@@ -209,6 +238,14 @@ export const projects: Project[] = [
   },
   {
     slug: "neuro-symbolic-reasoning",
+    gallery: [
+      {
+        src: "/assets/projects/neuro-symbolic-reasoning/generalization-results.png",
+        alt: "Saved experiment comparing neural and symbolic accuracy on IID and compositional expressions.",
+        caption:
+          "Saved run: neural accuracy falls from 87.1% to 71.7% under structural shift; the deterministic executor reaches 100% with clean inputs.",
+      },
+    ],
     image: "/assets/projects/neuro-symbolic-reasoning/accuracy-comparison.jpeg",
     imageAlt:
       "Original portfolio chart comparing neural and symbolic accuracy on IID and compositional expressions.",
@@ -457,4 +494,5 @@ export const projects: Project[] = [
     imageAlt:
       "Local coverage showing Arnav and his automatic doorbell prototype in April 2020",
   },
+  ...earlyProjects,
 ];

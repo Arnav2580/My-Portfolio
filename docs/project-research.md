@@ -26,3 +26,13 @@ Use actual screenshots, recordings and deployed links. Portfolio simulations wer
 - Research projects: original figures recovered from https://github.com/Arnav2580/My-Portfolio.
 
 External deployment HTML responding successfully does not establish backend health. Dates retain supplied precision; individual team contributions should be refined using Arnav's account rather than inferred from repository ownership.
+
+## Local archive review, 8 October 2026
+
+Inventoried the six supplied roots, excluding dependency environments, Git internals and credentials. Extracted text from 169 distinct documents/code files, identified 23 exact duplicates, and sampled three frames from each of 30 candidate project recordings. One misnamed/corrupt PowerPoint file was unreadable. This was a source/media review, not a reproduction of every experiment or a complete audio review.
+
+Added Green Power House Plant, Atmospheric Water Harvesting, Solution to Garbage, Science in Trash and the AARYASAT concept. `early-projects.ts` keeps these historical entries separate from the newer software data. Unknown dates use a null sort year instead of an invented date. Planet Saviors' October 2022 proposal extends the Green Power entry. The 2021 Sea Saviors report names a different team and is excluded.
+
+The local MOMO directory has only `commands/actions.py`; the local Porter API files are placeholders, although generator and model code are present. These do not replace descriptions based on the previously reviewed fuller repositories. CrowdCast remains a prototype awaiting repair; only its existing correlation chart was imported. Research charts are saved experimental outputs, not newly reproduced results.
+
+Older pitches include unsupported scale-up estimates and absolute environmental claims. New descriptions record the work and intent without treating those estimates as measured outcomes. Stress Meter and rover references remain excluded pending clearer authorship/build details. Source folders were not changed.

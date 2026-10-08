@@ -31,3 +31,11 @@ The honors feed uses Arnav's supplied award photographs and scans, converted to 
 The Big Brainer upload was a TIFF/camera container despite its `.jpeg` extension. Its full-resolution embedded JPEG was extracted before creating the web copy; the small default thumbnail was not used. The backdrop dates the award presentation to 11 October 2025. The speech is embedded from Arnav's supplied YouTube recording, JSlKbFChGH8.
 
 The BIS certificate specifies regional second prize on 9 December 2023; the LinkedIn account dates presentation to 6 January 2024. Toycathon event imagery dates the digital finals to 22-24 June 2021. The automatic-doorbell clipping is dated 25 April 2020. EDU ODYSSEY is presented as a learning milestone, distinct from the BIS award. Unresolved Hackers League rank differences are not stated as a confirmed rank.
+
+## Local project archive, 8 October 2026
+
+Green Power photographs and the atmospheric-water concept drawing come from Arnav's `A:\Projects\Photos` archive. The waste-process drawing and four Science in Trash product photos were extracted without visual changes from the supplied PowerPoint files. Original source folders remain intact.
+
+The additional Neuro-Symbolic and Probabilistic ML charts are copied from the local repositories' saved results. Probabilistic ML retains its original-project attribution. CrowdCast's heatmap comes from `backend/output.png` and is labeled as exploratory correlation, not predictive validation. No generic stock/reference images or personal application forms were imported.
+
+See [Project video upload guide](project-video-upload-guide.md) for source paths, recording choices and limitations. AARYASAT uses the existing abstract project illustration; it is not represented by a photograph of a built satellite.
