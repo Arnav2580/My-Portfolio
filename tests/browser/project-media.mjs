@@ -7,6 +7,9 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto("http://127.0.0.1:3000/projects");
     await expect(page.locator(".project-card > .project-video")).toHaveCount(4);
+    for (const poster of await page.locator(".project-video-poster").all()) {
+      await expect(poster).toHaveAttribute("src", /^\/assets\//);
+    }
     const bhuCard = page.locator(".project-card").filter({
       has: page.getByRole("button", {
         name: "View Bhu_dhrishti",

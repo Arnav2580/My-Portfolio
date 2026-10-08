@@ -24,6 +24,7 @@ export function ProjectVideo({ project }: { project: Project }) {
             className="project-video-poster"
             src={
               project.image ||
+              project.gallery?.[0]?.src ||
               `https://i.ytimg.com/vi/${project.youtubeId}/hqdefault.jpg`
             }
             alt=""
