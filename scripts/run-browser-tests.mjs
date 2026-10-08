@@ -24,7 +24,10 @@ const server = spawn(
     "--port",
     "3000",
   ],
-  { stdio: "inherit" },
+  {
+    stdio: "inherit",
+    env: { ...process.env, CONTACT_ALLOWED_ORIGIN: "http://127.0.0.1:3000" },
+  },
 );
 let serverError;
 server.on("error", (error) => {
