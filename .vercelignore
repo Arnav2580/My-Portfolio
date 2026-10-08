@@ -1,0 +1,4 @@
+docs/
+tests/browser/
+test-results/
+playwright-report/

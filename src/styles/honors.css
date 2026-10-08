@@ -1,0 +1,931 @@
+/* honors */
+.honors-page {
+  padding-bottom: 60px;
+}
+.honors-browser {
+  max-width: 960px;
+}
+.honors-order {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 28px;
+}
+.honors-order .mono {
+  font-size: 9px;
+  white-space: nowrap;
+}
+.honors-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 66px;
+  gap: 42px;
+  align-items: center;
+  padding: 0 0 20px 9px;
+}
+.honor-stack {
+  position: relative;
+  isolation: isolate;
+  perspective: 1400px;
+}
+.honor-stack::before,
+.honor-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  z-index: -1;
+  transform: translate(0, 10px) rotate(-1.4deg);
+  transition: transform 0.25s;
+}
+.honor-stack::before {
+  transform: translate(0, 19px) rotate(1.3deg);
+}
+.honor-stack.is-open::before,
+.honor-stack.is-open::after {
+  transform: translateY(8px);
+}
+.honor-post {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 14px 35px #18232c09;
+  overflow: hidden;
+  animation: honor-arrive 0.25s ease-out;
+}
+@keyframes honor-arrive {
+  from {
+    opacity: 0.4;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.honor-card-trigger {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 28px;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+.honor-card-trigger:hover .honor-read {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.honor-author {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.honor-author img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.honor-author strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+.honor-author > span > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+.honor-card-trigger h3 {
+  font-size: clamp(24px, 3vw, 36px);
+  margin-bottom: 22px;
+}
+.honor-placeholder {
+  display: flex;
+  aspect-ratio: 16 / 7;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 40%, var(--card), transparent), var(--paper);
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+.honor-placeholder-mark {
+  font-size: 44px;
+  color: var(--gold);
+}
+.honor-placeholder small {
+  font: 9px var(--mono);
+}
+.honor-read {
+  display: block;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.honor-details {
+  padding: 0 28px 28px;
+}
+.honor-details > p {
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+.honors-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+.honors-arrows button {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+}
+.honors-arrows .honor-next {
+  width: 64px;
+  height: 64px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.honors-arrows button:hover:not(:disabled) {
+  transform: translateX(3px);
+}
+.honors-arrows button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+.honors-hint {
+  font-size: 11px;
+  margin: 16px 0 0 10px;
+}
+.honor-media {
+  display: grid;
+  gap: 20px;
+}
+.honor-media figure {
+  margin: 0;
+}
+.honor-image,
+.honor-video-play {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--card);
+}
+.honor-image img {
+  object-fit: contain;
+}
+.honor-media video,
+.honor-media iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+  background: #171c20;
+}
+.honor-media figcaption {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 10px 0;
+}
+.honor-video-play {
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+.honor-video-play img {
+  object-fit: cover;
+}
+.honor-video-play span {
+  position: relative;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 18px;
+  border-radius: 30px;
+}
+@media (max-width: 600px) {
+  .honors-stage {
+    grid-template-columns: minmax(0, 1fr) 40px;
+    gap: 14px;
+    padding-left: 4px;
+  }
+  .honors-order {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .honor-card-trigger {
+    padding: 18px;
+  }
+  .honor-author {
+    gap: 8px;
+    align-items: start;
+  }
+  .honor-author img {
+    width: 34px;
+    height: 34px;
+  }
+  .honor-author > span > span {
+    font-size: 10px;
+  }
+  .honor-author strong {
+    font-size: 13px;
+  }
+  .honor-details {
+    padding: 0 18px 18px;
+  }
+  .honor-placeholder {
+    aspect-ratio: 4 / 3;
+    font-size: 12px;
+    padding: 14px;
+  }
+  .honor-placeholder small {
+    font-size: 8px;
+  }
+  .honor-read {
+    font-size: 11px;
+  }
+  .honors-arrows .honor-next,
+  .honors-arrows button {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+}
+
+/* Featured speech and chronological editorial posts. */
+.featured-speech {
+  margin-bottom: 72px;
+  padding: 28px 0 40px;
+  border-block: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+.speech-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.speech-heading > .mono {
+  font-size: 11px;
+  color: var(--muted);
+}
+.speech-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+.speech-recording {
+  position: sticky;
+  top: 100px;
+}
+.speech-player {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #151b23;
+}
+.speech-player > button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+.speech-player img {
+  object-fit: cover;
+}
+.speech-player button::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(transparent, #000b);
+  pointer-events: none;
+}
+.speech-player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.speech-play {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  z-index: 1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 14px;
+}
+.speech-play > span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #ffffffa0;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.speech-player button:hover .speech-play > span {
+  background: #ffffff30;
+  transform: scale(1.08);
+}
+.speech-player button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -4px;
+}
+.speech-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.speech-caption > span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.speech-recording blockquote {
+  margin: 34px 0 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--gold);
+  font: clamp(23px, 2.3vw, 32px)/1.4 var(--serif);
+}
+.speech-recording cite {
+  display: block;
+  margin-top: 15px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.speech-award {
+  font: 11px/1.6 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+.speech-copy h2 {
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.1;
+  margin: 17px 0 25px;
+}
+.speech-copy > p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.speech-copy .speech-topic {
+  padding-block: 18px;
+  border-block: 1px solid var(--line);
+  font: 19px/1.5 var(--serif);
+  color: var(--ink);
+}
+.is-compact .speech-layout {
+  align-items: center;
+}
+.is-compact .speech-recording {
+  position: static;
+}
+.is-compact .speech-recording blockquote {
+  font-size: 24px;
+}
+.honors-archive {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 760px);
+  gap: clamp(32px, 6vw, 100px);
+  align-items: start;
+  padding: 25px 0 50px;
+}
+.honors-archive-index {
+  position: sticky;
+  top: 110px;
+  min-width: 0;
+}
+.honors-archive-index h2 {
+  margin: 20px 0;
+  font-size: 33px;
+  line-height: 1.15;
+}
+.honors-archive-index > p {
+  font-size: 13px;
+  color: var(--muted);
+}
+.honors-archive-index nav {
+  display: grid;
+  border-top: 1px solid var(--line);
+  margin-top: 25px;
+}
+.honors-archive-index nav button {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font: 12px var(--mono);
+  text-align: left;
+}
+.honors-archive-index nav button[aria-pressed="true"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+.honors-archive-index nav button span {
+  opacity: 0;
+}
+.honors-archive-index nav button[aria-pressed="true"] span {
+  opacity: 1;
+}
+.honors-archive-index p.mono {
+  font-size: 10px;
+  margin-top: 22px;
+}
+.honors-feed {
+  display: grid;
+  gap: 36px;
+  min-width: 0;
+}
+.award-post {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 10px 35px #10233806;
+  scroll-margin-top: 100px;
+}
+.award-post-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 25px 28px 0;
+}
+.award-post-header img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+.award-post-header strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+.award-post-header p {
+  margin: 3px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.award-post-mark {
+  margin-left: auto;
+  color: var(--gold);
+}
+.award-post-copy {
+  padding: 27px 28px 22px;
+}
+.award-post-copy h3 {
+  font: 31px/1.2 var(--serif);
+  margin: 12px 0;
+}
+.award-post-copy .eyebrow {
+  font-size: 9px;
+}
+.award-post-copy p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.award-post-copy .award-organization {
+  font-size: 11px;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+.award-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+  min-height: 44px;
+}
+.award-gallery {
+  min-width: 0;
+}
+.award-gallery-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--card);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.award-gallery-frame a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.award-gallery-frame img {
+  object-fit: contain;
+}
+.award-gallery-frame video,
+.award-gallery-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+.award-video-start {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  cursor: pointer;
+  background: var(--card);
+  color: var(--ink);
+}
+.award-video-start span {
+  position: absolute;
+  inset: auto 20px 20px;
+  padding: 15px;
+  background: var(--paper);
+}
+.award-gallery-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 28px;
+}
+.award-gallery-footer p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.award-gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.award-gallery-controls .mono {
+  font-size: 9px;
+  white-space: nowrap;
+}
+.award-gallery-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.award-gallery-dots {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+.award-gallery-dots button {
+  width: 28px;
+  height: 28px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.award-gallery-dots button::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.award-gallery-dots button[aria-pressed="true"]::after {
+  background: var(--ink);
+}
+.award-post-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  margin: 0 28px;
+  padding: 18px 0;
+  font-size: 10px;
+  color: var(--muted);
+}
+.honor-preview-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 16/9;
+  background: var(--card);
+  margin-block: 20px;
+}
+.honor-preview-photo img {
+  object-fit: contain;
+}
+.honor-preview-summary {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-block: 20px;
+}
+.honor-details .award-gallery-footer {
+  padding-inline: 0;
+}
+@media (max-width: 800px) {
+  .speech-layout {
+    grid-template-columns: 1fr;
+  }
+  .speech-recording {
+    position: static;
+  }
+  .speech-copy h2 {
+    font-size: 35px;
+  }
+  .honors-archive {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+  }
+  .honors-archive-index {
+    position: static;
+  }
+  .honors-archive-index h2 {
+    max-width: 420px;
+  }
+  .honors-archive-index nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+  }
+  .honors-archive-index nav button {
+    flex-shrink: 0;
+    gap: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .featured-speech {
+    margin-bottom: 45px;
+  }
+  .speech-heading .eyebrow {
+    font-size: 9px;
+  }
+  .speech-play {
+    left: 16px;
+    bottom: 16px;
+    font-size: 12px;
+  }
+  .speech-play > span {
+    width: 36px;
+    height: 36px;
+  }
+  .speech-recording blockquote {
+    font-size: 23px;
+    padding-left: 15px;
+  }
+  .award-post-header {
+    padding: 20px 18px 0;
+  }
+  .award-post-copy {
+    padding: 24px 18px 18px;
+  }
+  .award-post-copy h3 {
+    font-size: 27px;
+  }
+  .award-gallery-footer {
+    padding: 12px 18px;
+    flex-wrap: wrap;
+  }
+  .award-gallery-controls {
+    margin-left: auto;
+  }
+  .award-post-footer {
+    margin-inline: 18px;
+  }
+}
+.award-recording-link {
+  display: inline-block;
+  margin: 0 28px 18px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Consistent text posters; photographs appear only in the reading dialog. */
+.honor-poster {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: 350px;
+  padding: 28px;
+  text-align: left;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  cursor: pointer;
+}
+.honor-poster .honor-author {
+  flex-shrink: 0;
+  margin-bottom: 22px;
+}
+.honor-poster-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font: 29px/1.2 var(--serif);
+  margin-bottom: 18px;
+}
+.honor-poster-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.honor-poster-read {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 12px;
+  color: var(--accent);
+}
+.honor-poster:hover .honor-poster-read {
+  text-decoration: underline;
+}
+.honor-poster:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -5px;
+  border-radius: 12px;
+}
+.honors-stage {
+  align-items: center;
+}
+.honors-order {
+  min-height: 32px;
+  align-items: start;
+}
+.honor-dialog {
+  width: min(960px, calc(100vw - 32px));
+  max-height: min(820px, calc(100dvh - 40px));
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  overflow: auto;
+  box-shadow: 0 30px 100px #0005;
+}
+.honor-dialog::backdrop {
+  background: #0d1721b8;
+  backdrop-filter: blur(5px);
+}
+.honor-dialog-inner {
+  padding: 26px 30px 35px;
+}
+.honor-dialog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+  margin-bottom: 30px;
+}
+.honor-dialog-top .eyebrow {
+  font-size: 9px;
+}
+.honor-dialog-top .icon-button {
+  flex-shrink: 0;
+  font-size: 24px;
+}
+.honor-dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  align-items: start;
+  gap: 36px;
+}
+.honor-dialog-media {
+  min-width: 0;
+  width: 100%;
+  max-width: 280px;
+  margin-inline: auto;
+}
+.honor-dialog-media .award-gallery-frame {
+  border-radius: 8px;
+  aspect-ratio: 4/3;
+}
+.honor-dialog-media .award-gallery-footer {
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.honor-dialog-media .award-gallery-controls {
+  margin-left: auto;
+}
+.honor-dialog-media .award-recording-link {
+  margin: 0 0 15px;
+}
+.honor-dialog-context {
+  border-top: 1px solid var(--line);
+  padding-top: 15px;
+  font: 11px/1.7 var(--mono);
+  color: var(--muted);
+}
+.honor-dialog-portrait {
+  margin: 0;
+}
+.honor-dialog-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.honor-dialog-portrait figcaption {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.honor-dialog-story h2 {
+  font: clamp(28px, 3vw, 38px)/1.15 var(--serif);
+  margin: 16px 0;
+}
+.honor-dialog-story > .eyebrow {
+  font-size: 9px;
+}
+.honor-dialog-story p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.honor-dialog-story .honor-dialog-distinction {
+  color: var(--gold);
+  font: 11px/1.7 var(--mono);
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 600px) {
+  .honor-poster {
+    height: 390px;
+    padding: 22px;
+  }
+  .honor-poster-title {
+    font-size: 26px;
+    -webkit-line-clamp: 3;
+  }
+  .honor-poster .honor-author {
+    gap: 10px;
+  }
+  .honor-poster .honor-author span span {
+    font-size: 10px;
+  }
+  .honor-dialog-inner {
+    padding: 18px;
+  }
+  .honor-dialog-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .honor-dialog-media {
+    max-width: 240px;
+  }
+  .honor-dialog-top {
+    margin-bottom: 20px;
+  }
+}

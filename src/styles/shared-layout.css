@@ -1,0 +1,75 @@
+/* shared layout */
+.contact-invite {
+  padding-block: 95px;
+}
+.contact-invite > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+.contact-invite h2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  margin-bottom: 20px;
+}
+.contact-invite > p {
+  font-size: 13px;
+}
+.round-link {
+  width: 83px;
+  height: 83px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 36px;
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.round-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotate(8deg);
+}
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+.site-footer .brand {
+  font-size: 32px;
+}
+.site-footer p {
+  margin: 12px 0 0;
+  font-size: 11px;
+}
+.footer-links {
+  display: flex;
+  gap: 25px;
+  font-size: 12px;
+}
+.site-footer > .fine {
+  font-size: 9px;
+  text-align: right;
+  line-height: 1.9;
+}
+.page-intro {
+  padding-block: 85px 60px;
+  max-width: 900px;
+}
+.page-intro h1 {
+  margin-bottom: 25px;
+}
+.page-description {
+  font-size: 17px;
+  max-width: 610px;
+  line-height: 1.8;
+}

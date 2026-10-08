@@ -1,0 +1,288 @@
+/* story reader */
+.story-landing {
+  padding-block: 40px 85px;
+}
+.story-opening {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 70px;
+  margin-top: 35px;
+}
+.story-opening h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  margin-bottom: 25px;
+}
+.story-opening .button {
+  margin-top: 15px;
+}
+.chapter-list {
+  margin-top: 60px;
+}
+.chapter-list > a {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+  padding-block: 30px;
+}
+.chapter-list > a:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.chapter-number {
+  font-family: var(--serif);
+  font-size: 34px;
+  color: var(--gold);
+}
+.chapter-list h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.chapter-list p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.chapter-list > a > .mono {
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 9px;
+}
+.story-note {
+  font-family: var(--serif);
+  font-style: italic;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 17px;
+}
+.chapter-page {
+  padding-block: 35px 60px;
+}
+.reader-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+  margin-bottom: 30px;
+  gap: 15px;
+  font-size: 12px;
+}
+.reader-controls > div {
+  display: flex;
+  gap: 7px;
+}
+.reader-controls button {
+  font-size: 12px;
+  border: 1px solid var(--line);
+  min-height: 44px;
+  padding: 8px 12px;
+}
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  pointer-events: none;
+}
+.reading-progress i {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+}
+.book-spread {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: start;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+.chapter-sidebar {
+  padding: 38px 28px;
+  position: sticky;
+  top: 25px;
+}
+.chapter-sidebar > p {
+  font-family: var(--serif);
+  font-size: 23px;
+  color: var(--ink);
+}
+.chapter-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-block: 35px;
+}
+.chapter-sidebar nav a {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.chapter-sidebar nav a[aria-current="page"] {
+  color: var(--ink);
+}
+.chapter-sidebar nav span {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+}
+.chapter-paper {
+  padding: 60px 65px;
+  background: var(--paper);
+  border-left: 1px solid var(--line);
+  box-shadow: -8px 0 20px #00000003;
+  min-width: 0;
+}
+.story-prose {
+  font-size: calc(19px * var(--reader-scale, 1));
+  line-height: 1.95;
+}
+.story-prose h1 {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.story-prose h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+.story-prose p:first-of-type:first-letter {
+  float: left;
+  font-size: 3.7em;
+  line-height: 1;
+  padding: 4px 8px 0 0;
+  color: var(--accent);
+}
+.story-prose p {
+  scroll-margin-top: 50px;
+}
+.chapter-end {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 55px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+.chapter-end .eyebrow {
+  font-size: 9px;
+}
+.chapter-end > span:last-child {
+  color: var(--gold);
+  font-size: 25px;
+}
+.chapter-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  font-size: 12px;
+}
+.plain-reader .book-spread {
+  display: block;
+  border: 0;
+  background: none;
+}
+.plain-reader .chapter-sidebar {
+  display: none;
+}
+.plain-reader .chapter-paper {
+  max-width: 760px;
+  margin: auto;
+  border: 0;
+  box-shadow: none;
+  padding: 30px 0;
+}
+
+/* Quiet documentary companions; the manuscript itself stays verbatim. */
+.chapter-recordings-link {
+  display: block;
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--accent);
+}
+.story-recordings {
+  margin-top: 55px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 120px;
+}
+.story-recordings h2 {
+  margin: 15px 0;
+  font: 30px/1.2 var(--serif);
+}
+.story-recordings .recordings-intro {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.story-recording {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+.recording-year {
+  color: var(--gold);
+  font-size: 13px;
+  padding-top: 3px;
+}
+.recording-copy .eyebrow {
+  font-size: 9px;
+}
+.recording-copy h3 {
+  font: 23px/1.3 var(--serif);
+  margin: 10px 0;
+}
+.recording-copy p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.recording-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.recording-actions button {
+  background: transparent;
+  border: 0;
+  padding: 12px 0;
+  color: var(--accent);
+  cursor: pointer;
+  min-height: 44px;
+  text-align: left;
+}
+.story-recording-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  margin: 15px 0;
+  border-radius: 6px;
+}
+.recording-project-link {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+@media (max-width: 600px) {
+  .story-recording {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .story-recordings h2 {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "arnav-goyal-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/unit/*.test.mjs",
+    "test:browser": "node tests/browser/site.mjs",
+    "test:media": "node tests/browser/project-media.mjs",
+    "test:experience": "node tests/browser/experience-and-vision.mjs",
+    "test:honors": "node tests/browser/honors.mjs",
+    "test:motion": "node tests/browser/scroll-motion.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
+    "import:story": "node scripts/import-story.mjs",
+    "format": "prettier --write src tests scripts docs README.md *.json *.ts",
+    "format:check": "prettier --check src tests scripts docs README.md *.json *.ts",
+    "verify": "npm run check:assets && npm test && npm run build",
+    "test:ci": "node scripts/run-browser-tests.mjs"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.35.0",
+    "gray-matter": "^4.0.3",
+    "next": "16.3.8",
+    "next-themes": "^0.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prettier": "^3.9.9",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

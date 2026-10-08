@@ -1,0 +1,124 @@
+/* project details */
+.project-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.filter-group {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.filter-group button {
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  font-size: 11px;
+  min-height: 44px;
+}
+.filter-group button[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.filter-group button:hover {
+  border-color: var(--line);
+}
+.sort-label {
+  font-size: 11px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--muted);
+}
+select {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 11px;
+  font-size: 11px;
+}
+.project-dialog {
+  padding: 0;
+  border: 1px solid var(--line);
+  width: min(740px, calc(100% - 32px));
+  max-height: 90dvh;
+  background: var(--paper);
+  color: var(--ink);
+  overscroll-behavior: contain;
+}
+.project-dialog::backdrop {
+  background: #0d1729aa;
+  backdrop-filter: blur(5px);
+}
+.dialog-inner {
+  padding: 25px;
+}
+.dialog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.dialog-top .eyebrow {
+  margin: 0;
+}
+.project-details {
+  padding-block: 35px;
+}
+.project-details h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 25px;
+}
+.project-details h3 {
+  font-size: 18px;
+  margin-top: 30px;
+}
+.project-details p,
+.project-details li {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.project-details .lead {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--ink);
+}
+.project-details ul {
+  padding-left: 20px;
+}
+.project-details li {
+  margin-bottom: 10px;
+}
+.credit {
+  font-size: 12px !important;
+  border-left: 2px solid var(--line);
+  padding-left: 15px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 25px;
+}
+.tags span,
+.tag {
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+}
+.project-page {
+  max-width: 850px;
+  padding-block: 45px 80px;
+}
+.project-page > .project-art {
+  margin-top: 35px;
+}
+.project-page .project-details h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}

@@ -1,0 +1,41 @@
+/* journal */
+.journal-page {
+  padding-bottom: 80px;
+}
+.journal-empty {
+  border-block: 1px solid var(--line);
+  padding: 60px 20px 70px;
+  text-align: center;
+}
+.journal-mark {
+  font-family: var(--serif);
+  font-size: 120px;
+  line-height: 1;
+  color: var(--gold);
+  height: 95px;
+}
+.journal-empty h2 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+}
+.journal-empty p {
+  max-width: 390px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+}
+.journal-topics {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  padding-top: 35px;
+  font-size: 9px;
+}
+.journal-entry {
+  padding-block: 30px;
+  border-top: 1px solid var(--line);
+}
+.article-page {
+  max-width: 760px;
+  padding-block: 40px 80px;
+}

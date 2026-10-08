@@ -1,0 +1,128 @@
+/* story cover */
+.current-section {
+  padding-top: 0;
+}
+.story-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 90px;
+  padding-block: 65px 80px;
+  border-bottom: 1px solid var(--line);
+}
+.story-feature h2 {
+  font-size: clamp(2.5rem, 4.9vw, 4.4rem);
+}
+.story-feature p {
+  max-width: 450px;
+  font-size: 14px;
+}
+.serif-lead,
+.story-feature p.serif-lead {
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.story-meta {
+  display: block;
+  margin-top: 19px;
+  font-size: 8px;
+  color: var(--muted);
+}
+.book-stage {
+  height: 470px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+}
+.book {
+  width: 280px;
+  height: 375px;
+  position: relative;
+  transform: rotateY(-19deg) rotateZ(5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.7s;
+}
+.book-link:hover .book {
+  transform: rotateY(-7deg) rotateZ(0);
+}
+.book:before {
+  content: "";
+  position: absolute;
+  inset: 6px -13px 5px auto;
+  width: 15px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ded8cc 0px,
+    #ded8cc 1px,
+    #f4efdf 1px,
+    #f4efdf 3px
+  );
+  transform: rotateY(90deg);
+  transform-origin: left;
+}
+.book:after {
+  content: "";
+  position: absolute;
+  inset: 15px -4px -6px 8px;
+  background: #132c3b;
+  transform: translateZ(-20px);
+  box-shadow: 22px 24px 36px #14243129;
+}
+.book-face {
+  position: absolute;
+  inset: 0;
+  background: #1d3548;
+  color: #f5ede0;
+  padding: 30px 30px 25px;
+  border-left: 7px solid #132a3c;
+  box-shadow:
+    inset 3px 0 4px #ffffff15,
+    0 0 0 1px #132432;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.book-face > .mono {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+.book-title {
+  font-family: var(--serif);
+  font-size: 43px;
+  line-height: 1.1;
+  margin-top: 26px;
+  letter-spacing: -0.03em;
+}
+.book-title > span {
+  color: #cbaa79;
+}
+.book-bottom {
+  margin-top: auto;
+  font-size: 7px !important;
+  line-height: 1.7;
+  color: #c8c4b9;
+  letter-spacing: 0.16em;
+}
+.book-orbit {
+  position: absolute;
+  width: 195px;
+  height: 155px;
+  left: 90px;
+  top: 174px;
+}
+.book-orbit i {
+  border: 1px solid #b9996390;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform: rotate(-35deg) scaleY(0.5);
+}
+.book-orbit i:nth-child(2) {
+  transform: rotate(35deg) scaleY(0.5);
+}
+.book-orbit i:nth-child(3) {
+  transform: rotate(90deg) scaleY(0.5);
+}

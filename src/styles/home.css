@@ -1,0 +1,166 @@
+/* home */
+.hero {
+  overflow: clip;
+  --px: 0px;
+  --py: 0px;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 31px;
+}
+.hero-top .eyebrow,
+.hero-top > .mono {
+  font-size: 9px;
+  color: var(--muted);
+}
+.hero-visual {
+  position: relative;
+  height: 510px;
+  isolation: isolate;
+  perspective: 1100px;
+  max-width: 1700px;
+  margin: auto;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0 8% 20px;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 90px 90px;
+  opacity: 0.18;
+  mask-image: radial-gradient(ellipse, black, transparent 67%);
+}
+.name-marquee {
+  position: absolute;
+  top: 70px;
+  inset-inline: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.name-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.name-track > span {
+  font-size: clamp(120px, 19vw, 280px);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.1;
+  white-space: nowrap;
+  padding-right: 0.18em;
+  color: var(--ink);
+}
+.portrait-shell {
+  position: absolute;
+  width: 637px;
+  max-width: 125vw;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(calc(-50% + var(--px))) translateY(var(--py));
+  transition: transform 0.3s ease-out;
+  z-index: 2;
+  mask-image: linear-gradient(black 85%, transparent 100%);
+}
+.hero-portrait {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(10px 15px 17px #18232c16);
+}
+.hero-side {
+  position: absolute;
+  top: 295px;
+  z-index: 3;
+  width: 180px;
+}
+.hero-side.left {
+  left: max(6%, calc((100% - 1200px) / 2));
+}
+.hero-side.right {
+  right: max(6%, calc((100% - 1200px) / 2));
+  text-align: right;
+}
+.hero-side p {
+  font: 9px/1.9 var(--mono);
+  letter-spacing: 0.08em;
+}
+.crosshair {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+.tiny-orbit {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 16px;
+  transform: rotate(-35deg);
+}
+.tiny-orbit:after {
+  content: "";
+  position: absolute;
+  inset: 12px -10px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+.hero-caption {
+  position: absolute;
+  bottom: 18px;
+  right: 4%;
+  font-size: 8px;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+}
+.hero-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.hero-bottom h2 {
+  font-size: clamp(2.6rem, 5.1vw, 4.7rem);
+  margin-bottom: 0;
+}
+.hero-bottom .eyebrow {
+  font-size: 9px;
+  margin-bottom: 17px;
+}
+.hero-copy {
+  max-width: 430px;
+  padding-top: 0;
+  justify-self: end;
+}
+.hero-copy .actions {
+  margin: 0;
+}
+.hero-copy p {
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+.section-heading h2 {
+  margin-bottom: 0;
+}
+.section-heading .eyebrow {
+  margin-bottom: 18px;
+  font-size: 9px;
+}
+.section-description {
+  font-size: 14px;
+  margin-bottom: 32px;
+}
