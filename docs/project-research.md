@@ -20,8 +20,8 @@ These notes document the repository review used to prepare the portfolio copy on
 
 Use actual screenshots, recordings and deployed links. Portfolio simulations were removed at Arnav's request.
 
-- Bhu_dhrishti: video `nFVXjeLsh_c` (mapping confirmed by Arnav), https://bhudrishti-4d.onrender.com/.
-- NeckLink: video `FLAZcYVzhos`, https://necklink.onrender.com/.
+- Bhu_dhrishti: video `nq5pvwIKaYo` (mapping confirmed by Arnav), https://bhudrishti-4d.onrender.com/.
+- NeckLink: video `8bmRGq05lz8`, https://necklink.onrender.com/.
 - CoinPlay: video `Yzdlr-dC4uk` and twelve screenshots under `public/assets/projects/coinplay/`.
 - Research projects: original figures recovered from https://github.com/Arnav2580/My-Portfolio.
 

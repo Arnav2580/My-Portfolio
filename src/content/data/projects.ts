@@ -22,6 +22,14 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "bhu-dhrishti",
+    gallery: [
+      {
+        src: "/assets/projects/bhu-dhrishti/city-explorer.png",
+        alt: "BhuDrishti city explorer showing a cadastral map, a 3D district and selected parcel details.",
+        caption:
+          "City explorer: land parcels and vertical property in one view",
+      },
+    ],
     title: "Bhu_dhrishti",
     category: "Spatial systems",
     date: "2026",
@@ -43,10 +51,17 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Three.js", "Express", "SQLite", "CityJSON"],
     github: "https://github.com/Arnav2580/SIH_ULPIN",
     liveUrl: "https://bhudrishti-4d.onrender.com/",
-    youtubeId: "nFVXjeLsh_c",
+    youtubeId: "nq5pvwIKaYo",
   },
   {
     slug: "necklink",
+    gallery: [
+      {
+        src: "/assets/projects/necklink/command-center.png",
+        alt: "NeckLink command center with corridor risks, weather, vehicle tracking and a Northeast India map.",
+        caption: "Command center: corridor risk and accessibility intelligence",
+      },
+    ],
     title: "NeckLink",
     category: "Spatial systems",
     date: "2026",
@@ -76,7 +91,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Arnav2580/NeckLink",
     liveUrl: "https://necklink.onrender.com/",
-    youtubeId: "FLAZcYVzhos",
+    youtubeId: "8bmRGq05lz8",
   },
   {
     slug: "agentx",
@@ -221,6 +236,47 @@ export const projects: Project[] = [
   },
   {
     slug: "secure-data-pipeline",
+    image: "/assets/projects/secure-data-pipeline/lambda-trigger.png",
+    imageAlt: "S3 trigger connected to the ingestion Lambda.",
+    gallery: [
+      {
+        src: "/assets/projects/secure-data-pipeline/s3-upload.png",
+        alt: "S3 confirms a successful sample JSON upload.",
+        caption: "S3 confirms a successful sample JSON upload.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/lambda-trigger.png",
+        alt: "An S3 event trigger connected to the ingestion Lambda.",
+        caption: "An S3 event trigger connected to the ingestion Lambda.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/dynamodb-records.png",
+        alt: "Four sample records displayed in DynamoDB.",
+        caption: "Four sample records displayed in DynamoDB.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/iam-permissions.png",
+        alt: "IAM permissions for S3, DynamoDB, KMS and CloudWatch Logs.",
+        caption: "IAM permissions for S3, DynamoDB, KMS and CloudWatch Logs.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/https-bucket-policy.png",
+        alt: "S3 bucket policy denying insecure transport, with public access blocked.",
+        caption:
+          "S3 bucket policy denying insecure transport, with public access blocked.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/kms-encryption.png",
+        alt: "Customer-managed KMS key configuration for the pipeline.",
+        caption: "Customer-managed KMS key configuration for the pipeline.",
+      },
+      {
+        src: "/assets/projects/secure-data-pipeline/cloudwatch-metrics.png",
+        alt: "CloudWatch duration, invocation and error metrics during testing.",
+        caption:
+          "CloudWatch duration, invocation and error metrics during testing.",
+      },
+    ],
     title: "Secure S3 Data Pipeline",
     category: "Cloud & engineering",
     date: "2026",

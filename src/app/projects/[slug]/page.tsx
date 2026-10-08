@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/content/data/projects";
+import { ProjectVideo } from "@/components/projects/project-video";
 import { ProjectArt } from "@/components/projects/project-art";
 import { ProjectDetails } from "@/components/projects/project-details";
 export function generateStaticParams() {
@@ -34,7 +35,7 @@ export default async function Project({
         ← All projects
       </Link>
       <h1 className="sr-only">{p.title}</h1>
-      <ProjectArt project={p} />
+      {p.youtubeId ? <ProjectVideo project={p} /> : <ProjectArt project={p} />}
       <ProjectDetails project={p} />
       <Link href="/contact" className="button primary">
         Let’s talk about it ↗

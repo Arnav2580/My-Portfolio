@@ -5,7 +5,6 @@ import Image from "next/image";
 import type { Project } from "@/content/data/projects";
 
 export function ProjectMedia({ project }: { project: Project }) {
-  const [playing, setPlaying] = useState(false);
   const [selected, setSelected] = useState(0);
   const gallery = project.gallery || [];
   const shot = gallery[selected];
@@ -83,32 +82,6 @@ export function ProjectMedia({ project }: { project: Project }) {
           <p className="project-gallery-hint">
             Select an image to view it full size.
           </p>
-        </div>
-      )}
-      {project.youtubeId && (
-        <div className="project-video">
-          {playing ? (
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?autoplay=1`}
-              title={`${project.title} video walkthrough`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          ) : (
-            <button
-              className="project-video-start"
-              onClick={() => setPlaying(true)}
-              aria-label={`Play ${project.title} walkthrough`}
-            >
-              <span className="video-play-icon" aria-hidden="true">
-                ▶
-              </span>
-              <span className="eyebrow">PROJECT WALKTHROUGH</span>
-              <strong>{project.title}</strong>
-              <span>Watch the project in action</span>
-            </button>
-          )}
         </div>
       )}
       <div className="project-media-links">

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/content/data/projects";
+import { ProjectVideo } from "./project-video";
 import { ProjectArt } from "./project-art";
 import { ProjectDetails } from "./project-details";
 export function ProjectGrid({ limit }: { limit?: number }) {
@@ -63,6 +64,12 @@ export function ProjectGrid({ limit }: { limit?: number }) {
       <div className="project-grid">
         {items.map((p, i) => (
           <article className="project-card" key={p.slug}>
+            {p.youtubeId && (
+              <ProjectVideo
+                key={`${p.slug}-${active?.slug || "card"}`}
+                project={p}
+              />
+            )}
             <button
               className="project-open"
               aria-label={"View " + p.title}
@@ -71,7 +78,7 @@ export function ProjectGrid({ limit }: { limit?: number }) {
                 setActive(p);
               }}
             >
-              <ProjectArt project={p} />
+              {!p.youtubeId && <ProjectArt project={p} />}
               <div className="project-card-body">
                 <div className="card-meta mono">
                   <span>
@@ -120,7 +127,11 @@ export function ProjectGrid({ limit }: { limit?: number }) {
           </div>
           {active && (
             <>
-              <ProjectArt project={active} />
+              {active.youtubeId ? (
+                <ProjectVideo key={active.slug} project={active} />
+              ) : (
+                <ProjectArt project={active} />
+              )}
               <ProjectDetails project={active} />
               <Link
                 className="button"
