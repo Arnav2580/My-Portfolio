@@ -85,4 +85,4 @@ Projects with YouTube recordings use playable video cards and video-first detail
 
 Arnav clarified that Aerospacizm was co-founded around November 2020 during the COVID lockdown, before college. The experience date and the opening sentence of its Chapter Two passage reflect this correction; the remaining manuscript is unchanged. The story integrity hash was updated for this approved sentence edit.
 
-The Green Power House Plant group photo is cropped to its right-hand plant setup, excluding Arnav. The original remains in the source archive; only the cropped version is published.
+Arnav replaced both Green Power House Plant photographs with a new supplied photo showing the plants and multimeter. It is published as `plant-and-multimeter.jpeg` and used as the project's main image and sole gallery image, preserving the supplied framing.
