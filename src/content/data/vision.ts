@@ -1,7 +1,7 @@
 export const visionSummary = [
-  "One world. A Type II civilization. My ultimate goal is to help humanity build the capability to harness energy at the scale of our star and sustain life and industry beyond Earth.",
-  "Robotic mining, orbital solar energy, space-based industry, and orbital computing sit at the heart of that ambition. I imagine connected infrastructure that can extract resources, manufacture, recycle, and support protected habitats beyond our planet.",
-  "My current steps begin on Earth: building in healthtech, AI, and the physical economy. I want to create useful products now while developing the knowledge, teams, and resources to contribute to that larger future.",
+  "My ultimate goal is to help humanity become a Type II civilization: harnessing energy at the scale of our star and sustaining life and industry beyond Earth. One world is the spirit behind that ambition — humanity working together toward a shared future. This is the direction I want my life and work to serve.",
+  "I envision robotic mining, orbital solar energy, and space-based facilities that manufacture, process, and recycle materials. Connected by transport networks and orbital computing, this infrastructure could support protected habitats beyond our planet. The station in this animation represents that long-term ambition.",
+  "Today, I am building JEEVNI and a proof of concept connecting AI, blockchain, and the physical economy. These ventures are where I learn to understand users, build useful products, and coordinate resources. I want that work to create value now while developing the experience, teams, and resources to take on larger challenges. The projects may evolve; the end goal remains one world, working toward a Type II civilization.",
 ];
 
 export const visionDetails = [
