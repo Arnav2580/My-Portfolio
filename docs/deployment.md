@@ -24,6 +24,8 @@ Copy `.env.example` to `.env.local` for local configuration. Preserve local cred
 
 The recipient is fixed to arnavgoyal.work@gmail.com; visitor email is used for Reply-To. The route checks origin, validates input, uses a honeypot, hashes rate-limit keys and uses provider idempotency. No message database is created. Missing service configuration returns a temporary-unavailability response rather than claiming a message was delivered.
 
+Production sends through Resend as `Arnav Portfolio <contact@arnavgoyal.com>`. Keep website submissions addressed only to Gmail: Arnav's `contact@arnavgoyal.com` mailbox has a 1 GB storage limit. Do not add that mailbox as a recipient or CC for form submissions. Direct emails to the publicly listed address still use its mailbox storage. Production credentials are stored as Vercel secrets; local credentials belong only in the ignored `.env.local` file.
+
 The IP-header trust assumes Vercel's proxy. Review it before switching providers. Actual delivery must be verified separately after sender verification and service configuration; automated browser checks do not send real messages.
 
 ## Checks and generated files
