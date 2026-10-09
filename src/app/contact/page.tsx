@@ -17,6 +17,9 @@ export default function Contact() {
         <div className="contact-info">
           <span className="eyebrow">FIND ME HERE</span>
           <h2>My inbox is open.</h2>
+          <a className="email-link" href="mailto:contact@arnavgoyal.com">
+            contact@arnavgoyal.com ↗
+          </a>
           <a className="email-link" href="mailto:arnavgoyal.work@gmail.com">
             arnavgoyal.work@gmail.com ↗
           </a>
