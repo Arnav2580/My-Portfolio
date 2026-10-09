@@ -9,7 +9,7 @@ const recordings = [
     title: "The loss that changed my direction",
     description:
       "The science competition I describe at the beginning of this chapter. Coming last taught me that building an idea and explaining it were two different skills.",
-    videoId: "28LwfRu0His",
+    videoId: "RgXFAr22Cmk",
     label: "A turning point",
   },
   {

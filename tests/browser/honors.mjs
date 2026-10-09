@@ -120,7 +120,7 @@ try {
       .click();
     await expect(page.locator(".story-recording-player")).toHaveAttribute(
       "src",
-      "https://www.youtube-nocookie.com/embed/28LwfRu0His?autoplay=1",
+      "https://www.youtube-nocookie.com/embed/RgXFAr22Cmk?autoplay=1",
     );
     await page
       .getByRole("button", {
