@@ -174,10 +174,6 @@
 .chapter-end .eyebrow {
   font-size: 9px;
 }
-.chapter-end > span:last-child {
-  color: var(--gold);
-  font-size: 25px;
-}
 .chapter-pagination {
   display: flex;
   justify-content: space-between;

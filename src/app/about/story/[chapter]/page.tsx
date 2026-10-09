@@ -63,7 +63,6 @@ export default async function ChapterPage({
             {index === 0 && <StoryRecordings />}
             <div className="chapter-end">
               <span className="eyebrow">END OF CHAPTER {c.number}</span>
-              <span aria-hidden="true">✧</span>
             </div>
             <nav className="chapter-pagination" aria-label="Chapter pagination">
               {index > 0 ? (
