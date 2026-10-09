@@ -97,7 +97,7 @@ try {
         await page.locator(".project-video button").click();
         await expect(page.locator(".project-video iframe")).toHaveAttribute(
           "src",
-          "https://www.youtube-nocookie.com/embed/EYC0nVegbFI?autoplay=1",
+          "https://www.youtube-nocookie.com/embed/KIIR4S1xlYc?autoplay=1",
         );
       }
       if (slug === "bhu-dhrishti" || slug === "necklink") {

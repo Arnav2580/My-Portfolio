@@ -17,7 +17,7 @@ const recordings = [
     title: "An idea at the front door",
     description:
       "My automatic doorbell: an early attempt to build a practical response to a problem around me. A small prototype, and a reason to keep experimenting.",
-    videoId: "EYC0nVegbFI",
+    videoId: "KIIR4S1xlYc",
     label: "An early experiment",
   },
 ];

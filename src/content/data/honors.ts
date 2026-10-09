@@ -262,7 +262,7 @@ export const honors: Honor[] = [
       },
       {
         type: "youtube",
-        videoId: "EYC0nVegbFI",
+        videoId: "KIIR4S1xlYc",
         poster: "/assets/honors/automatic-doorbell/press-feature.webp",
         caption: "Watch the automatic doorbell demonstration.",
       },

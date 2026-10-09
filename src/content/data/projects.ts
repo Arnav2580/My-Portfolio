@@ -489,7 +489,7 @@ export const projects: Project[] = [
     takeaway:
       "A small early experiment in turning an everyday problem into something tangible. Local coverage in April 2020 encouraged me to keep building and presenting my ideas.",
     tech: ["Hardware prototyping", "Touch-free interaction"],
-    youtubeId: "EYC0nVegbFI",
+    youtubeId: "KIIR4S1xlYc",
     image: "/assets/honors/automatic-doorbell/press-feature.webp",
     imageAlt:
       "Local coverage showing Arnav and his automatic doorbell prototype in April 2020",

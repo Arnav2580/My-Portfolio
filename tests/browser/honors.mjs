@@ -101,7 +101,7 @@ try {
       .click();
     await expect(modal.locator("iframe")).toHaveAttribute(
       "src",
-      "https://www.youtube-nocookie.com/embed/EYC0nVegbFI?autoplay=1",
+      "https://www.youtube-nocookie.com/embed/KIIR4S1xlYc?autoplay=1",
     );
     await page.keyboard.press("Escape");
     assert.ok(
@@ -131,7 +131,7 @@ try {
     await expect(page.locator(".story-recording-player")).toHaveCount(1);
     await expect(page.locator(".story-recording-player")).toHaveAttribute(
       "src",
-      "https://www.youtube-nocookie.com/embed/EYC0nVegbFI?autoplay=1",
+      "https://www.youtube-nocookie.com/embed/KIIR4S1xlYc?autoplay=1",
     );
     assert.ok(
       await page.evaluate(
