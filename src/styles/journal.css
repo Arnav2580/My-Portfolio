@@ -39,3 +39,80 @@
   max-width: 760px;
   padding-block: 40px 80px;
 }
+.booklet-download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.booklet-download .mono {
+  font-size: 11px;
+  color: var(--muted);
+}
+.booklet-contents {
+  border-block: 1px solid var(--line);
+  padding: 22px 0;
+  margin-bottom: 40px;
+  scroll-margin-top: 24px;
+}
+.booklet-contents summary {
+  cursor: pointer;
+  font-size: 17px;
+}
+.booklet-contents ul {
+  list-style: none;
+  padding: 0;
+}
+.booklet-contents a {
+  display: block;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.booklet-article .prose {
+  overflow-wrap: anywhere;
+  font-size: 18px;
+  line-height: 1.85;
+}
+.booklet-article .page-intro h1 {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1.12;
+}
+.booklet-article .prose h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.booklet-article .prose h3 {
+  margin-top: 36px;
+}
+.booklet-article .prose h4 {
+  margin: 28px 0 14px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.booklet-article .prose [id] {
+  scroll-margin-top: 24px;
+}
+.booklet-article .prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 28px auto 14px;
+  background: white;
+  border-radius: 6px;
+}
+.booklet-back {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 30;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 12px 18px;
+  font-size: 12px;
+  box-shadow: 0 4px 20px #00000014;
+}

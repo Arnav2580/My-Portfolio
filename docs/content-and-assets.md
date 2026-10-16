@@ -86,3 +86,9 @@ Projects with YouTube recordings use playable video cards and video-first detail
 Arnav clarified that Aerospacizm was co-founded around November 2020 during the COVID lockdown, before college. The experience date and the opening sentence of its Chapter Two passage reflect this correction; the remaining manuscript is unchanged. The story integrity hash was updated for this approved sentence edit.
 
 Arnav replaced both Green Power House Plant photographs with a new supplied photo showing the plants and multimeter. It is published as `plant-and-multimeter.jpeg` and used as the project's main image and sole gallery image, preserving the supplied framing.
+
+## Evolutionary psychology booklet
+
+Published 16 October 2026 from Arnav's `evo.psyc` project. The web edition contains all 32 chapters, four appendices, 128 teaching examples, two original diagrams, the example index, and 120 references. Research limitations and OpenAI Codex attribution are preserved. The PDF download is the unchanged 250-page supplied edition (SHA-256 `fa4e626eedb23eb9435fef8c4a0f494a12347b49eac97fb56237f58b57801318`).
+
+Import with `python scripts/import-evolutionary-psychology.py <book-project-directory>` from the portfolio root, then format the post. This requires PyMuPDF, ReportLab, and Windows Georgia fonts. The importer reads the original manuscript, end matter, reference metadata, figure factories, and verified PDF; it does not fetch or rewrite research. Citation numbers link to the original scholarly URLs; chapter and example links navigate within the post. The website import was checked against all 1,663 manuscript paragraphs with none missing.

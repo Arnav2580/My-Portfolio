@@ -18,8 +18,15 @@ export function getChapter(slug: string) {
     minutes: Math.ceil(content.split(/\s+/).length / 200),
   };
 }
-export async function markdown(content: string) {
-  return (await remark().use(html).process(content)).toString();
+export async function markdown(content: string, anchors = false) {
+  const rendered = (await remark().use(html).process(content)).toString();
+  let heading = 0;
+  return anchors
+    ? rendered.replace(
+        /<h([1-6])>/g,
+        (_, depth) => `<h${depth} id="section-${++heading}">`,
+      )
+    : rendered;
 }
 export function getPosts() {
   const dir = path.join(process.cwd(), "src/content/posts");
@@ -49,6 +56,23 @@ export function getPosts() {
               ? data.updated
               : undefined,
           excerpt: String(data.excerpt || ""),
+          byline:
+            typeof data.byline === "string" ? data.byline : "By Arnav Goyal",
+          booklet:
+            typeof data.booklet === "string" &&
+            data.booklet.startsWith("/assets/")
+              ? data.booklet
+              : undefined,
+          contents:
+            data.toc === true
+              ? Array.from(content.matchAll(/^(#{1,6}) (.+)$/gm))
+                  .map((match, index) => ({
+                    id: `section-${index + 1}`,
+                    title: match[2],
+                    depth: match[1].length,
+                  }))
+                  .filter((heading) => heading.depth === 2)
+              : [],
           content,
         },
       ];
